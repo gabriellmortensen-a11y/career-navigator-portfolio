@@ -1,0 +1,97 @@
+{
+  "what": "Mean per-phase figures for complete résumé runs on Live, aggregated from resume_generation_run.phases. Aggregates only: no résumé text, no job, no account identifiers.",
+  "code": "Live 7322289-era (recruiter-selects flow, CE_RESUME_FLOW=recruiter; stories evidence flow)",
+  "window_utc": [
+    "2026-10-21T00:00:00Z",
+    "2026-10-25T00:00:00Z"
+  ],
+  "runs": 32,
+  "accounts": 1,
+  "phases": [
+    {
+      "phase": "evidence_documents",
+      "label": "Canonical evidence documents",
+      "kind": "code",
+      "mean_cost_usd": 0.0,
+      "mean_seconds": 0.9,
+      "mean_model_calls": 0
+    },
+    {
+      "phase": "artifact_coverage",
+      "label": "Named tools and credentials",
+      "kind": "code",
+      "mean_cost_usd": 0.0,
+      "mean_seconds": 0.4,
+      "mean_model_calls": 0
+    },
+    {
+      "phase": "selection",
+      "label": "Each requirement's chosen story, and alternates to fill the page",
+      "kind": "code + Jev on ties",
+      "mean_cost_usd": 0.0,
+      "mean_seconds": 1.7,
+      "mean_model_calls": 0
+    },
+    {
+      "phase": "bullets",
+      "label": "The recruiter picks the stories; the writer writes the summaries, then the bullets",
+      "kind": "language model (selector + writer)",
+      "mean_cost_usd": 0.0605,
+      "mean_seconds": 86.5,
+      "mean_model_calls": 22.0
+    },
+    {
+      "phase": "grounding",
+      "label": "Assertion-level grounding",
+      "kind": "skipped on this flow",
+      "mean_cost_usd": 0.0,
+      "mean_seconds": 0.0,
+      "mean_model_calls": 0
+    },
+    {
+      "phase": "enrichment",
+      "label": "Competencies and target line",
+      "kind": "language model",
+      "mean_cost_usd": 0.0066,
+      "mean_seconds": 31.0,
+      "mean_model_calls": 2.0
+    },
+    {
+      "phase": "review",
+      "label": "Recruiter's order and the printed-page fit",
+      "kind": "code + Jev",
+      "mean_cost_usd": 0.0,
+      "mean_seconds": 5.7,
+      "mean_model_calls": 0
+    },
+    {
+      "phase": "coverage",
+      "label": "Coverage assessment — recruiter and hiring manager",
+      "kind": "language model ×2 + editor",
+      "mean_cost_usd": 0.0331,
+      "mean_seconds": 66.5,
+      "mean_model_calls": 3.7
+    },
+    {
+      "phase": "advice",
+      "label": "What to do next",
+      "kind": "language model",
+      "mean_cost_usd": 0.0057,
+      "mean_seconds": 21.7,
+      "mean_model_calls": 1.0
+    }
+  ],
+  "sum_of_phase_means": {
+    "cost_usd": 0.1059,
+    "seconds": 214.4
+  },
+  "bullets_per_resume": {
+    "mean": 17.6,
+    "min": 9,
+    "max": 30
+  },
+  "notes": [
+    "Phase cost is a difference of the account's call ledger across the phase, so concurrent work on the same account can add to it.",
+    "The run-level total recorded on the same runs averages $0.187 because it spans the whole run, including concurrent account activity; see evidence/04-metric-ledger.md M-03 and M-04."
+  ]
+}
