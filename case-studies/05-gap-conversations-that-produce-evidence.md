@@ -21,7 +21,8 @@ step is getting them to say what they actually did. That is the evidence a recru
 work they forgot or never wrote down. The first versions of the gap chat had five problems.
 
 1. **Too many gaps.** One job showed 15 "gaps" while both model reviewers said they would
-   advance the candidate. In my words: "if they wouldn't pass on you, they're really not gaps."
+   advance the candidate. A gap is only what a reader would pass on you without; in my words, "if
+   that's the case, they're really not gaps" (`e718941`).
 2. **One question per requirement.** On one posting, thirteen closely related compliance
    requirements were asked as thirteen gaps.
 3. **The model kept the count.** The model reported its own progress, which contradicted the page.
@@ -61,7 +62,7 @@ agents designed the state machine and the ledger.
 **Model for the words; code for the state.**
 
 1. **What counts as a gap** comes from the assessment: a missing or light requirement a recruiter or hiring-manager persona would likely pass on.
-   Everything else is optional and labelled that way. After a review, the model reviewers' actual
+   Everything else is optional and labeled that way. After a review, the model reviewers' actual
    "no"s override the estimate ([A-06](../evidence/03-claim-index.md#a-06),
    [A-07](../evidence/03-claim-index.md#a-07)).
 2. **Themes.** Related gaps are grouped by embeddings plus a Jev "same area?" question. On one
@@ -82,8 +83,8 @@ agents designed the state machine and the ledger.
    to answer counts only from that ledger.
 6. **One proposal at the end**, either a new story or a fuller one that replaces an older one. Facts
    are accounted for by code: in the draft, deliberately left out, or flagged.
-7. **The person saves to a role they confirm**, with the chat's guess preselected and marked. "It should confirm what role it was with, even if it
-   thinks it knows" ([K-13](../evidence/03-claim-index.md#k-13)).
+7. **The person saves to a role they confirm**, with the chat's guess preselected and marked. I asked
+   that it confirm the role even when it thinks it knows ([K-13](../evidence/03-claim-index.md#k-13)).
 8. **Limits become Growth areas** by their own press, and are never evidence
    ([K-28](../evidence/03-claim-index.md#k-28)).
 
@@ -127,14 +128,18 @@ agents designed the state machine and the ledger.
 ## Limitations
 
 - **Threshold tests stub Jev.** Themes and thresholds were measured on a handful of jobs. The test
-  suite stubs Jev so that each gap is its own theme.
+  suite stubs Jev with fixed answers: grouping and the no-chaining rule are exercised, Jev's real
+  behavior is not ([A-09](../evidence/03-claim-index.md#a-09)). *(Corrected 2026-10-31: this said each gap was its own theme.)*
 - **Two rules for years.** *Tune my evidence* uses a different years rule (dated roles read by Jev).
-  The two can disagree ([D-14](../evidence/05-discrepancies.md#d-14)).
+  The two can disagree ([D-14](../evidence/05-discrepancies.md#d-14)). *Note, 2026-10-31: that page was retired on 2026-10-30;
+  Career Direction's role pages keep its reading and its rule ([A-107](../evidence/03-claim-index.md#a-107)).*
 - **Posting language can still enter.** The chat sees the focus requirement. If the person accepts a
   draft that echoes it, posting language enters the record. The policy asks the model not to borrow
-  posting words; no code checks it.
-- **The "closes the gap" judgement is still a model.** On the older résumé-review gap panel it is a
-  model judgement, reused for identical input ([K-14](../evidence/03-claim-index.md#k-14)).
+  posting words; no code checks it. *Note, 2026-10-31: since 2026-10-28 the chat can also read a
+  posting's text when the person asks what it says, labeled as the employer's words; a proposal
+  made on that turn still needs Save ([K-31](../evidence/03-claim-index.md#k-31)).*
+- **The "closes the gap" judgment is still a model.** On the older résumé-review gap panel it is a
+  model judgment, reused for identical input ([K-14](../evidence/03-claim-index.md#k-14)).
 
 ## What changed after learning from use
 

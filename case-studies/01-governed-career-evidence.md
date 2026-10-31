@@ -115,7 +115,7 @@ whose authority and purpose are understood" ([P-30](../evidence/03-claim-index.m
 |---|---|
 | Prompt-sourced citations fell from **49.47% → 3.62%** of proposals; admission yield rose **19.65% → 45.65%** | [M-01](../evidence/04-metric-ledger.md#m-01), [M-02](../evidence/04-metric-ledger.md#m-02) (one run per arm, 8 projections) |
 | A mixed-role claim is now **unwritable**, not just unlikely | [K-01](../evidence/03-claim-index.md#k-01) |
-| Before the bullet constraint shipped, 0 of 12,440 candidates, 46 selections and 34 bullets disagreed on role, so the constraint codified current behaviour ([M-54](../evidence/04-metric-ledger.md#m-54)) | [K-02](../evidence/03-claim-index.md#k-02) |
+| Before the bullet constraint shipped, 0 of 12,440 candidates, 46 selections and 34 bullets disagreed on role, so the constraint codified current behavior ([M-54](../evidence/04-metric-ledger.md#m-54)) | [K-02](../evidence/03-claim-index.md#k-02) |
 | Every entry path ends in a person's press, with two named exceptions | [Knowledge 02](../knowledge/02-admission-and-acceptance.md#every-way-in) |
 
 ## Limitations

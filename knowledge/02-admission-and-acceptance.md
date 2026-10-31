@@ -1,6 +1,6 @@
 # Knowledge 02 — Admission and acceptance
 
-*Knowledge 3.0 · describes Live `7322289` (2026-10-24)*
+*Knowledge 3.1 · describes Live `00eac95` (2026-10-31)*
 
 **The question this answers:** how does information become part of someone's career record, and
 who decides?
@@ -48,30 +48,50 @@ a false positive: a background runner's `threading.Event()` tripped it, so the i
 |---|---|---|---|
 | **Add Evidence** page | The person writes; sentences are offered by rule | Tick spans → Propose → Apply | Verified |
 | **Résumé import** | A deterministic parser (no model); an optional editor model *suggests* wording | Proposal page shows every job, with editable employer and title; accept or reject each suggestion; Approve | Verified ([K-12](../evidence/03-claim-index.md#k-12)) |
-| **Evidence chat** | One governed model call proposes an add, correction, enrichment or retirement | Save, and for an addition, **confirm the role** (the chat's guess is preselected and marked): "it should confirm what role it was with, even if it thinks it knows" | Verified ([K-13](../evidence/03-claim-index.md#k-13)) |
+| **Evidence chat** | One governed model call proposes an add, correction, enrichment or retirement | Save, and for an addition, **confirm the role** (the chat's guess is preselected and marked): the owner asked that it confirm the role even when it thinks it knows | Verified ([K-13](../evidence/03-claim-index.md#k-13)) |
 | **Guided gap discovery** (inside the chat) | One question per turn; *code* decides when to stop | One consolidated proposal, then Save. "Stopping is never saving." | Verified ([A-08](../evidence/03-claim-index.md#a-08)) |
-| **Gap panel** on a résumé review | The person types; a model checks it against the requirement | "Save all" is the only act that creates evidence | Verified, but the "closes the gap" verdict is a model judgement ([K-14](../evidence/03-claim-index.md#k-14)) |
+| **Gap panel** on a résumé review | The person types; a model checks it against the requirement | "Save all" is the only act that creates evidence | Verified, but the "closes the gap" verdict is a model judgment ([K-14](../evidence/03-claim-index.md#k-14)) |
 | **Brought résumé, "Accept as is"** | The same parser | One press on the review page. **There is no proposal page**, which contradicts the importer's own docstring | Limited ([D-05](../evidence/05-discrepancies.md#d-05)) |
 | **Story composition** | Jev "same work" | **None**: automatic, no new claims, reversible | Limited ([K-06](../evidence/03-claim-index.md#k-06)) |
+| **Interview coach** (inside the chat, since 2026-10-25) | Jev reads that a message tells their work. *Code* offers their own words, verbatim, as an addition, whenever the coaching call offered nothing. Never their reason for the role; a piece that already says it is shown, not offered | Save, with the role preselected when the answer's claims share one role, else chosen beside Save | Verified ([A-65](../evidence/03-claim-index.md#a-65)) |
+| **Application chat** (since 2026-10-27; additions since 2026-10-30) | Jev reads that a message tells their work. *Code* offers it as an addition to the piece the answer is told from (the nearest by embeddings), or as a new piece. The writer may name what "it" refers to, and code keeps that only if every one of their words survives | The card shows what is added on its own, then the whole piece with the addition highlighted; Save | Verified ([A-75](../evidence/03-claim-index.md#a-75)); the evidence chat's figure check is not run on these offers ([D-36](../evidence/05-discrepancies.md#d-36)) |
+| **A line the person says is wrong** (interview coach, since 2026-10-25) | *Code* finds the record text: a footnote number, a quoted sentence, or a unique run of four or more of their words. The coaching model cannot offer a removal | Save: a correction to that exact text, only the words they named when they name part of a sentence | Verified ([A-69](../evidence/03-claim-index.md#a-69)) |
 
 Saving a job posting (Quick add, flagship occupations) is not an evidence path. A requirement
 "guides; it is never a source of career claims."
+
+**Reading is not a way in either.** Since 2026-10-28 Career Chat can read the person's account to
+answer a question: opportunities, reviews, postings, résumés sent, stage history. Reading writes
+nothing, and a test checks that every statement it sends is a read
+([A-102](../evidence/03-claim-index.md#a-102)). A posting's text reaches the chat only inside that read, when the person asks
+what it says, labeled as the employer's words. Anything to add still goes through a proposal and
+Save ([K-31](../evidence/03-claim-index.md#k-31)).
 
 ## Corrections, duplicates and flags
 
 - **Corrections are built by code.** The chat proposes only *wrong* and *right*. Code builds the
   corrected story by exact replacement, records it, and retires the old one with `replaced_by`. An
   empty *right* means removal (2026-10-24) ([K-15](../evidence/03-claim-index.md#k-15)).
+- **A disputed part comes out, not the whole piece.** In the interview coach, when the person names
+  only part of a sentence as wrong, code takes only those words out of the record's own wording.
+  The whole piece is retired only when what they named is nearly all of it (85% of its words). The
+  disputed words leave every draft at once and never reach a later call
+  ([A-69](../evidence/03-claim-index.md#a-69)).
 - **Duplicates are removed conservatively.** Only word-for-word copies are taken. A differently
   worded piece that Jev calls "the same work" is never removed for the person
   ([K-16](../evidence/03-claim-index.md#k-16)).
 - **Already on the record.** A deterministic phrase-overlap test runs first, then Jev's `COVERS`
-  question. An addition the record already says in full is not offered.
-- **Flagged evidence is not used.** A deterministic reading flags a story that generalises, measures
+  question. An addition the record already says in full is not offered. The interview coach's
+  offers go through the same check ([A-65](../evidence/03-claim-index.md#a-65)).
+- **An addition shows what it adds.** Since 2026-10-30 the card shows the added words on their own,
+  then the whole piece as Save will leave it, with the addition highlighted. Nothing is written
+  before Save ([A-75](../evidence/03-claim-index.md#a-75)).
+- **Flagged evidence is not used.** A deterministic reading flags a story that generalizes, measures
   nothing and names no act. The person's Flag or Unflag overrides it either way. Flagged stories are
-  excluded from résumés and shared links. The product owner decided this on 2026-10-14, after a
-  résumé opened a role with a flagged belief-statement ([K-17](../evidence/03-claim-index.md#k-17)).
-  The résumé-side test is a source inspection, not a behavioural test.
+  excluded from résumé bullets, from the stories the professional and role summaries are written
+  from (since 2026-10-28), and from shared links. The product owner decided this on 2026-10-14,
+  after a résumé opened a role with a flagged belief-statement ([K-17](../evidence/03-claim-index.md#k-17)).
+  The résumé-side test is a source inspection, not a behavioral test.
 - **Restore is planned, not built.** The RETIRE contract says reversal is "clearing `retired_at`",
   but no code path un-retires evidence today ([K-18](../evidence/03-claim-index.md#k-18)).
 
@@ -101,6 +121,19 @@ Each failure was fixed at the stage that produced it; none was patched downstrea
    - *Fixed at:* Save files an addition only under the role shown on the card, which the person
      confirms or changes (the chat's guess is preselected and marked)
      ([K-13](../evidence/03-claim-index.md#k-13)).
+5. **The application chat used what the person told it and offered nothing to save** (2026-10-30).
+   The product owner's words: "doing a great job of taking in what I am saying to update the
+   answers to the questions I am trying to answer but its not updating the evidence record when
+   something is discovered, like it should" (`75cba31`).
+   - *Fixed at:* the chat's turn. Code offers their words for the record, as the interview coach
+     already did ([A-75](../evidence/03-claim-index.md#a-75)).
+6. **Correcting part of a draft's evidence fell apart** (2026-10-30). Only a footnote or a quote of
+   most of a line was recognized, so a disputed phrase was read as new work and offered for the
+   record. The product owner's words: "I found that there is an error in one and tried to fix it
+   and it falls apart at that point" (`aa49142`).
+   - *Fixed at:* how code finds the disputed text. A unique phrase of four or more of their words
+     names the line, only the named part comes out, and saying something is wrong is never taken as
+     work they told ([A-69](../evidence/03-claim-index.md#a-69)).
 
 ## Where the implementation and the rule still disagree
 
@@ -109,5 +142,10 @@ Some things listed here as limited are deliberate, and they are named rather tha
 - A brought résumé is recorded without its proposal page.
 - Concept indexing at apply time is a model choosing concepts from a vector shortlist. It predates
   the "Jev selects" rule ([P-05](../evidence/03-claim-index.md#p-05)).
+- The interview coach offers the person's words on any turn where its call offered nothing, so an
+  offer can come before the coach's follow-up questions about their part and the result. The
+  person decides at Save ([A-65](../evidence/03-claim-index.md#a-65)).
+- Offers from the application chat skip the figure check the evidence chat runs on its proposals
+  ([D-36](../evidence/05-discrepancies.md#d-36)).
 
 See [Discrepancies](../evidence/05-discrepancies.md).

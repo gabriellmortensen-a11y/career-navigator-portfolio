@@ -44,7 +44,7 @@ each good application cheap, and make no decision for me.**
 
 ## Constraints
 
-- **No credentials, no scraping around refusals, and robots.txt honoured** wherever a page isn't an
+- **No credentials, no scraping around refusals, and robots.txt honored** wherever a page isn't an
   ATS public API.
 - **Sensitive data stays out of searches.** Health and disability terms never leave the system in a
   query.
@@ -143,7 +143,10 @@ capped at 60, and "found" actually fell. Different days and queries, too ([M-11]
 
 - **Outcomes are not claimed.** Throughput is not success. Interviews and offers are not joined to
   anything the product did, and there is one user ([Product 05](../product/05-quality-and-measurement.md#what-is-not-measured)).
-- **Kits read only Greenhouse forms.** Lever and Ashby get a résumé only.
+- **Kits read only Greenhouse forms.** Lever and Ashby get a résumé only. *Note, 2026-10-31: since
+  2026-10-27 the person can add any form's questions by hand or in the application chat, which
+  drafts answers with them; the kit still reads only Greenhouse forms ([A-40](../evidence/03-claim-index.md#a-40),
+  [A-73](../evidence/03-claim-index.md#a-73)).*
 - **The extension can't operate Greenhouse's searchable menus**, has only static tests, and its fill
   rate is unmeasured.
 - **Discover's "Already applied" writes no status event**, so activity undercounts

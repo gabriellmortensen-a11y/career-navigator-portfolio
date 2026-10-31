@@ -1,6 +1,6 @@
 # Evidence 04 — Metric ledger
 
-*Every number the portfolio publishes, with its definition, sample, period, source and kind. Read the rules first.*
+*Every number the portfolio publishes, with its definition, sample, period, source and kind. Read the rules first. Release 2026.10.1 (describes Live `00eac95`, 2026-10-31) adds M-60 … M-81.*
 
 ## Rules
 
@@ -9,7 +9,7 @@
 3. **Counts are size, not quality** (commits, tests, lines).
 4. **Costs are measured charges** from the call ledger (`model_execution.cost_usd`: tokens × listed price), never reservations or estimates. No invoice is used.
 5. **Model personas are not people.** Where a metric uses the app's "recruiter" and "hiring manager" reviewer seats as the reference, it says so.
-6. **Live telemetry here is read-only aggregate data from one account (mine)**, queried on 2026-10-25. No record text was read. Usage by any other account is not reported.
+6. **Live telemetry here is read-only aggregate data from one account (mine)**, queried on 2026-10-25 (release 2026.10.0) and on 2026-10-31 (release 2026.10.1); each entry's source says which. No record text was read. Usage by any other account is not reported; answers given to visitors of my living-résumé links are reported only as aggregates.
 
 ## Index
 
@@ -36,11 +36,11 @@
 | [M-19](#m-19) | Model routing | Haiku 5.5 vs gpt-5-mini on short tasks (replay) | Chat: 8 s vs 13 s at about half the cost (6 chats); evidence answers 4 s vs 7 s at about a quarter (5); claim extraction about a tenth of the cost with every claim kept (6); concept indexing: Haiku tagged 2 of 21 concepts (10 calls); relationship review same verdict on 55% of 105 pieces; demand reading 62% of 37 |
 | [M-20](#m-20) | Model routing | Résumé trial | Haiku at high effort ≈ half the cost, but reviewers counted fewer relevant accomplishments on 4 of 6 postings; Haiku's résumés carried 2–4 grammar slips where gpt-5-mini's had none; Sonnet ≈ 3× the cost |
 | [M-21](#m-21) | Cost | Evidence-chat turn cost | Mean $0.0033 per call (108 calls, p50 11.5 s); Beta measurement on the caching day: $0.003–0.005 → $0.0017–0.0023 per turn, about 13k of 25k tokens read from cache. An earlier quote of "$0.02 a turn" was the estimate passed to the spend check; measured cost was about $0.004 |
-| [M-22](#m-22) | Cost/latency | Evidence reading vs exhaustive review | 1,164 → 68 judgements, 105 → 15 calls, 267 → 46.1 s, $0.4507 → $0.0385 per posting |
+| [M-22](#m-22) | Cost/latency | Evidence reading vs exhaustive review | 1,164 → 68 judgments, 105 → 15 calls, 267 → 46.1 s, $0.4507 → $0.0385 per posting |
 | [M-23](#m-23) | Evidence reading | Jev vs cosine at keeping directly relevant evidence | Jev's top 4 kept 461 of 531 direct pieces vs cosine's 413; Jev's sure cases agreed with the model reader 93% |
 | [M-24](#m-24) | Evidence reading | Jev stability on a repeated input | 0.45–0.54 across 11 runs (flips at 0.5) |
 | [M-25](#m-25) | Grounding | Sentence-level vs assertion-level grounding | Old validator: 48/48 statements established; assertion-level: 19/48 fully established; adversarial set 9/9 correct after two bug fixes |
-| [M-26](#m-26) | Evaluation | Evaluator variance on an unchanged artifact | Major findings ranged by up to 3 across four blind readings (7,7,6,5 and 6,8,5,5; declared tolerance ±3); an optimiser acceptance inside that noise was reversed |
+| [M-26](#m-26) | Evaluation | Evaluator variance on an unchanged artifact | Major findings ranged by up to 3 across four blind readings (7,7,6,5 and 6,8,5,5; declared tolerance ±3); an optimizer acceptance inside that noise was reversed |
 | [M-27](#m-27) | Retrieval experiments | Requirement × role top-3 reproduction | Indexing score reproduced the reference exactly in 21.3% (item recall 55.0%); requirement↔evidence cosine needed depth 27 for lossless top-3; deterministic floor 24 (765 slots vs 1,142) |
 | [M-28](#m-28) | Retrieval experiments | Hosted reranker vs Jev on the same population | Voyage reranker: depth 22, rank correlation 0.365 with the dense ordering and 0.359 with the cascade, $0.0028, p50 185 ms; Jev: depth 17 (17–22 over tie orders), p50 146 ms, $0.0223 |
 | [M-29](#m-29) | Latency | Page load while background work ran | 4–6 s instead of ~1 s per opportunity page |
@@ -54,9 +54,9 @@
 | [M-37](#m-37) | Experiments | Jev filter before the costly relationship review | 16.4% of 122 requirement × role pairs would have lost evidence; projected saving ~$1.03 per $1.11 review |
 | [M-38](#m-38) | Experiments | Frozen baseline + coverage floor for rebuilds | Regressions 4 → 0; rebuild $0.072 / 154 s → $0.028 / 86 s |
 | [M-39](#m-39) | Experiments | Reusing proven bullets across jobs | 0–1 writer calls saved, 13–60 s added |
-| [M-40](#m-40) | Experiments | Named-artifact certainty routing | Routed result equalled the fallback on 47 of 47 pairs; precision 2/2, recall 2/3 |
+| [M-40](#m-40) | Experiments | Named-artifact certainty routing | Routed result equaled the fallback on 47 of 47 pairs; precision 2/2, recall 2/3 |
 | [M-41](#m-41) | Résumé quality | Repeat-detection thresholds | Shared facts: 22 within-role sentence pairs at cosine ≥ 0.70, repeats read 0.86–0.94 and different work ≤ 0.84 (threshold 0.85); twin bullets: repeats 0.75–0.81, different ≤ 0.66 (threshold 0.75) |
-| [M-42](#m-42) | Historical evaluation | Human-labelled evaluation set (earlier build) | Eval Set v1: 47 blind human-judged pairs, baseline 37/47 (78.7%) → 38/47 (80.9%); a sealed 56-pair holdout has no recorded result |
+| [M-42](#m-42) | Historical evaluation | Human-labeled evaluation set (earlier build) | Eval Set v1: 47 blind human-judged pairs, baseline 37/47 (78.7%) → 38/47 (80.9%); a sealed 56-pair holdout has no recorded result |
 | [M-43](#m-43) | Résumé quality (older flow) | Bullets with phrases copied from the requirement | 2 of 220 on Live; 52 of 265 on Beta |
 | [M-44](#m-44) | Cost | Shared-link question cost | About $0.0047 per question |
 | [M-45](#m-45) | Gap conversations | Gap themes | 13 related compliance requirements → 1 theme; 11 growth requirements → 3; 10 requirements on a third posting → 4 |
@@ -74,6 +74,29 @@
 | [M-57](#m-57) | Résumé quality | Strong evidence written weakly | About 1 in 6 requirements assessed strong came out partial or absent on the reviewed résumé |
 | [M-58](#m-58) | Gap conversations | Gap list vs reviewer verdicts (before the gap redefinition) | One job showed 15 gaps while both model reviewers would advance the candidate |
 | [M-59](#m-59) | Latency | Jev question latency | p50 0.31–1.10 s depending on the question (e.g. 0.31 s repeat labels, 0.34 s interview evidence, 1.10 s story reading); Jev runs up to 32 questions at a time |
+| [M-60](#m-60) | Résumé cost/time | Résumé cost and time on Live after the speed route | 17 runs: cost mean $0.160, median $0.128 (min $0.103, max $0.278); time mean 214 s, median 210 s (min 165 s, max 304 s); per run: selector $0.0130, bullet writer $0.0135, summaries $0.0222 |
+| [M-61](#m-61) | Résumé time | Summary time at low vs medium reasoning | 86 s at low vs 148 s and 174 s at medium, with comparable Jev support per sentence (one posting) |
+| [M-62](#m-62) | Résumé output | Characters that fit two printed lines | Every bullet up to 228 characters printed on two lines; one of 244 printed on three, which the page measure counted as two → limit 220 |
+| [M-63](#m-63) | Résumé output | Finished-line bullets on fixed inputs | Same 20 bullets, same order, same 40 printed lines; 3 writer calls where there were 6 |
+| [M-64](#m-64) | Résumé quality | Polish experiment: meaning changed | 6 of 23 bullets at low reasoning, 8 at medium, different ones each time; none flagged |
+| [M-65](#m-65) | Résumé quality | A summary over the page's cap | 538 characters against a 520 cap; the page dropped the third sentence |
+| [M-66](#m-66) | Latency | Citation re-reading before caching | About 1,100 (requirement, line) Jev pairs and 60–130 s per view; 3,276 readings in three views |
+| [M-67](#m-67) | Job analysis | Requirement division on Live | 21 calls: 19 on Claude Haiku 5.5 ($0.0244, median 9.4 s), 2 on gpt-5-mini ($0.0140, median 30.1 s); 190 lines read as one ask, 145 divided into 416 asks |
+| [M-68](#m-68) | Model routing | Models used on Live by the new stages | Application chat 19 Haiku + 1 gpt-5-mini; application question 6 Haiku; role understanding 8 Haiku; requirement division 19 Haiku + 2 gpt-5-mini; living résumé 71 Haiku; evidence chat incl. coach 170 Haiku; résumé summaries 136 gpt-5-mini; career journey 1 gpt-5-mini; Growth plan and chat: no Live calls |
+| [M-69](#m-69) | Living résumé | Answer cost on Live | 14 visitor answers: mean model-call cost $0.00066, highest $0.0015 (with a posting $0.0008–0.0015); 5 owner previews, highest $0.0018; mean 2–8 s per kind |
+| [M-70](#m-70) | Career Chat | Career Chat reads on Live | 40 chat turns, 1 read the account; 336 routing questions to Jev, $0.0071 in all, median 0.2 s each |
+| [M-71](#m-71) | Application chat | Application chat on Live | 20 writer calls (19 Haiku, 1 gpt-5-mini), $0.029 in all, median 9.3 s per call; 6 question readings (Haiku), $0.005 |
+| [M-72](#m-72) | Application chat | Application chat evaluation | 5 questions, 10 code-scored criteria; measured spend $0.5036 (nine evaluation runs and calibration) and $0.1311 (second story); a first turn 30–70 s |
+| [M-73](#m-73) | Interview coach | Meaning questions calibration | 106 messages; "Let's come back to this" read 0.90 as leaving vs a story with "moved on" 0.32 |
+| [M-74](#m-74) | Application chat | Pasted application questions | Pasted questions 0.41–0.54; answers and requests 0.07 or less; a question about a draft 0.21 (Beta); new-question line 0.45 → 0.35 |
+| [M-75](#m-75) | Career Chat | Read-layer calibration | Routing lines set on 52 asks and 11 ordinary messages; note readings on the 187 gaps of Beta's rejected opportunities |
+| [M-76](#m-76) | Latency | Counting gaps for 71 résumés | 86 s to build every review view, so counts are kept |
+| [M-77](#m-77) | Interview coach | An introduction drafted from 35 pieces | 35 record pieces in one introduction, before claims-only answers |
+| [M-78](#m-78) | Gap conversations | Page said 4 gaps, chat said 2 | 4 vs 2: two of the four were one theme, and a just-saved story still read light |
+| [M-79](#m-79) | Engineering size | Test suite at the described commit | Full run on `00eac95`: 3,926 passed, 142 skipped, 0 failed in 652 s; 3,548 test functions in 230 files (static) |
+| [M-80](#m-80) | Living résumé | Same-work outcome completion | About +1 s and +60% tokens, with borderline readings; not adopted |
+| [M-81](#m-81) | Growth | Growth suggestions on Beta | One call for 15 Growth items, $0.0027 (Haiku) |
+| [M-82](#m-82) | Living résumé | Portfolio documents a visitor asks about | "Case study 1": 18th of 55 by content, 2nd by name, Jev 0.90–0.92; 4 of 4 document requests answered from the document; $0.0011–0.0017 an answer |
 
 ## Entries
 
@@ -268,7 +291,7 @@
 | Definition / denominator | Reviewer coverage partial/absent and marked critical, by assessment fit |
 | Sample | 55 reviewed résumés, one account |
 | Period | 2026-10-23/24 |
-| Source | `app/pipeline/assessment.py` (`NOTICED`); commit `53798d6` |
+| Source | `app/pipeline/assessment.py` (`NOTICED`); commit `6026681` |
 | Kind | Offline replay on Live data |
 | System state | Live data |
 | Limits | Same as M-13. |
@@ -303,6 +326,8 @@
 
 <a id="m-17"></a>
 ### M-17 — Summaries over the readability limit
+
+*Describes the summary path superseded on Live on 2026-10-28 ([A-101](03-claim-index.md#a-101)); Live summaries are now written to the page's own character cap ([M-65](#m-65)).*
 
 | Field | |
 |---|---|
@@ -376,7 +401,7 @@
 
 | Field | |
 |---|---|
-| Value | 1,164 → 68 judgements, 105 → 15 calls, 267 → 46.1 s, $0.4507 → $0.0385 per posting |
+| Value | 1,164 → 68 judgments, 105 → 15 calls, 267 → 46.1 s, $0.4507 → $0.0385 per posting |
 | Definition / denominator | Old: every candidate judged by a model; new: six pieces per demand, read once, eight calls in parallel |
 | Sample | 1 posting |
 | Period | 2026-10-05 |
@@ -432,7 +457,7 @@
 
 | Field | |
 |---|---|
-| Value | Major findings ranged by up to 3 across four blind readings (7,7,6,5 and 6,8,5,5; declared tolerance ±3); an optimiser acceptance inside that noise was reversed |
+| Value | Major findings ranged by up to 3 across four blind readings (7,7,6,5 and 6,8,5,5; declared tolerance ±3); an optimizer acceptance inside that noise was reversed |
 | Definition / denominator | 4 blind readings × 2 artifacts |
 | Sample | 8 readings |
 | Period | 2026-10-03 |
@@ -628,7 +653,7 @@
 
 | Field | |
 |---|---|
-| Value | Routed result equalled the fallback on 47 of 47 pairs; precision 2/2, recall 2/3 |
+| Value | Routed result equaled the fallback on 47 of 47 pairs; precision 2/2, recall 2/3 |
 | Definition / denominator | Pairs where routing changed the outcome |
 | Sample | 47 pairs |
 | Period | 2026-10-03 |
@@ -652,7 +677,7 @@
 | Limits | One record; post-deploy effect not yet measured. |
 
 <a id="m-42"></a>
-### M-42 — Human-labelled evaluation set (earlier build)
+### M-42 — Human-labeled evaluation set (earlier build)
 
 | Field | |
 |---|---|
@@ -661,7 +686,7 @@
 | Sample | 47 pairs |
 | Period | 2026-09-25 |
 | Source | beta4 commits `10a7501`, `8f9baa0`; ledger SYS-007, SYS-008, LAT-080 |
-| Kind | Human-labelled experiment |
+| Kind | Human-labeled experiment |
 | System state | Earlier build |
 | Limits | One-pair difference; v1 later judged to measure the wrong thing; no equivalent for the current pipeline. |
 
@@ -702,7 +727,7 @@
 | Definition / denominator | Average-link grouping at Jev ≥ 0.5 over cosine-near pairs |
 | Sample | 8 jobs, one account |
 | Period | 2026-10-24 |
-| Source | `app/evidence/themes.py` comment; commit `ea06f2f` |
+| Source | `app/evidence/themes.py` comment; commit `294d859` |
 | Kind | Measured |
 | System state | Live data |
 | Limits | Few jobs; tests stub Jev. |
@@ -831,7 +856,7 @@
 | Source | Migration `c5e1a9d47b20` docstring; commit `9dd1a46` |
 | Kind | Database check |
 | System state | Local corpus |
-| Limits | The constraint codified existing behaviour. |
+| Limits | The constraint codified existing behavior. |
 
 <a id="m-55"></a>
 ### M-55 — Data-loss incident
@@ -902,4 +927,326 @@
 | Kind | Telemetry |
 | System state | Live |
 | Limits | Network latency to a hosted service; varies by load. |
+
+<a id="m-60"></a>
+### M-60 — Résumé cost and time on Live after the speed route
+
+| Field | |
+|---|---|
+| Value | 17 complete runs: cost mean $0.160, median $0.128 (min $0.103, max $0.278); time mean 214 s, median 210 s (min 165 s, max 304 s). Per run, by stage: selector $0.0130 (5.1 calls), bullet writer $0.0135 (3.8 calls), summaries (`resume_summary_tool`) $0.0222 (6.5 calls) |
+| Definition / denominator | Run figures: `resume_generation_run.cost_usd` (the run ledger, as M-04) and `seconds` of runs in state complete. Stage figures: sum of `model_execution.cost_usd` and count of rows per stage, keyed to each run by `input_artifact->>'selection_run'`, ÷ runs |
+| Sample | 17 complete runs (one account); no run ended in another state |
+| Period | 2026-10-30 00:58:52 UTC (Live deploy of `77acb9c`, from the host's deploy history) → 2026-10-31 |
+| Source | Read-only query on the production host, 2026-10-31 |
+| Kind | Telemetry |
+| System state | Live `77acb9c` … `00eac95`: bullets written as their finished line, summaries from a positioning brief at low reasoning, started beside the bullets ([A-11](03-claim-index.md#a-11), [A-82](03-claim-index.md#a-82), [A-88](03-claim-index.md#a-88)) |
+| Limits | A different system state from M-04/M-05 (mean $0.187 / median $0.198; median 207 s): side by side, not a trend (rule 1). The run cost is an upper bound for the same reason as M-04 ([D-21](05-discrepancies.md#d-21)). I asked for half the time and the cost; M-05 and M-60 are different system states, and neither shows the run time halved. Per-call seconds are not recorded for these stages ([P-17](03-claim-index.md#p-17)). |
+
+<a id="m-61"></a>
+### M-61 — Summary time at low vs medium reasoning
+
+| Field | |
+|---|---|
+| Value | 86 s at low reasoning vs 148 s and 174 s at medium. Jev support per sentence of the professional summary .51 / .89 / .69 at low vs .62 / .89 / .48 and .60 / .89 / .48 at medium; every role summary supported, no flag, within the page's cap, with about a third of the reasoning |
+| Definition / denominator | Time of the summary steps (planner and writers) in one résumé run; Jev's support reading of each of the professional summary's three sentences |
+| Sample | 1 run at low vs 2 runs at medium, one posting |
+| Period | 2026-10-29 |
+| Source | Commit `85de28a`; `app/resume/main_summary.py` (`EFFORT` comment) |
+| Kind | Measured run |
+| System state | Beta (data refreshed from Live) |
+| Limits | n = 3, one posting. Summary time only, not a whole-résumé time; Live runs since are in [M-60](#m-60). |
+
+<a id="m-62"></a>
+### M-62 — Characters that fit two printed lines
+
+| Field | |
+|---|---|
+| Value | Every bullet of up to 228 characters printed on two lines; one of 244 printed on three, which the page measure (122 characters a line) counted as two → threshold 220 characters. Earlier, the page measure matched the print for all 56 bullets of three résumés |
+| Definition / denominator | Printed lines of each bullet in downloaded PDF résumés against its length in characters |
+| Sample | 78 bullets in four downloaded résumés; earlier 56 bullets in three |
+| Period | 2026-10-29 |
+| Source | Commits `7411d3f`, `77acb9c`; `app/resume/recruiter_flow.py` (`TWO_LINES` comment) |
+| Kind | Measured run (downloaded PDFs) |
+| System state | Beta |
+| Limits | One person's résumé template and font. 220 is the design limit taken from it ([A-91](03-claim-index.md#a-91)). |
+
+<a id="m-63"></a>
+### M-63 — Finished-line bullets on fixed inputs
+
+| Field | |
+|---|---|
+| Value | The same 20 bullets in the same order and the same 40 printed lines; 3 writer calls where there were 6 |
+| Definition / denominator | One earlier run's inputs written again with bullets drafted as their finished line and only bullets past two printed lines shortened |
+| Sample | One run's inputs |
+| Period | 2026-10-29 |
+| Source | Commit `7411d3f` |
+| Kind | Replay |
+| System state | Beta |
+| Limits | One résumé. Shows no bullet lost or reordered and fewer calls; says nothing about wording quality. |
+
+<a id="m-64"></a>
+### M-64 — Polish experiment: meaning changed
+
+| Field | |
+|---|---|
+| Value | Meaning changed in 6 of 23 bullets at low reasoning and 8 at medium, different bullets each time; none flagged as unclear. An earlier expanding instruction grew one bullet from 29 to 62 words |
+| Definition / denominator | Bullets whose polished copy said something different from the kept text ÷ bullets in the run |
+| Sample | One run's 23 bullets, at two reasoning levels |
+| Period | 2026-10-29 |
+| Source | Commits `61362ff`, `f23ed14` |
+| Kind | Replay |
+| System state | Beta |
+| Limits | One résumé; "meaning changed" was judged in the working session. The experiment was closed ([A-97](03-claim-index.md#a-97)). |
+
+<a id="m-65"></a>
+### M-65 — A summary over the page's cap
+
+| Field | |
+|---|---|
+| Value | 538 characters against a 520-character cap; the page dropped the third sentence |
+| Definition / denominator | Length of one professional summary against the writing policy's `executive_summary.max_chars` |
+| Sample | One run |
+| Period | 2026-10-28 |
+| Source | Commit `29754f5` |
+| Kind | Measured run |
+| System state | Beta |
+| Limits | One example; it is why the summary is now written to the page's own cap. |
+
+<a id="m-66"></a>
+### M-66 — Citation re-reading before caching
+
+| Field | |
+|---|---|
+| Value | About 1,100 (requirement, line) Jev pairs per view and 60–130 s per view; 3,276 readings in three views |
+| Definition / denominator | Jev readings asked to re-cite reworded lines when a review page was opened, before the readings were cached on their own committed session |
+| Sample | One review with every line reworded |
+| Period | 2026-10-30 |
+| Source | Commit `458864a` |
+| Kind | Measured run (a Live observation recorded in a commit) |
+| System state | Live, before `458864a` |
+| Limits | One review. Fixed at the source: readings are now kept ([A-93](03-claim-index.md#a-93)). |
+
+<a id="m-67"></a>
+### M-67 — Requirement division on Live
+
+| Field | |
+|---|---|
+| Value | 21 `requirement_division` calls: 19 on Claude Haiku 5.5 ($0.0244 in all, median 9.4 s), 2 on gpt-5-mini ($0.0140, median 30.1 s, before the assignment was set). `job_demand.division`: 190 lines read as one ask (`whole`), 145 lines divided (`divided`), 416 asks from divided lines (`part`) |
+| Definition / denominator | `model_execution` rows with stage `requirement_division` by model: count, sum of `cost_usd`, median `seconds`. `job_demand` rows by `division` where it is set |
+| Sample | All calls and all read lines of one account |
+| Period | Since 2026-10-25 (the stage reached Live with `a41a455`, deployed 2026-10-27 19:47 UTC) → 2026-10-31 |
+| Source | Read-only query on the production host, 2026-10-31 |
+| Kind | Telemetry |
+| System state | Live |
+| Limits | Single user. The two gpt-5-mini calls are the seed-assignment gap ([D-27](05-discrepancies.md#d-27)). |
+
+<a id="m-68"></a>
+### M-68 — Models used on Live by the new stages
+
+| Field | |
+|---|---|
+| Value | `application_chat` 19 Claude Haiku 5.5 + 1 gpt-5-mini; `application_question` 6 Haiku; `role_understanding` 8 Haiku; `requirement_division` 19 Haiku + 2 gpt-5-mini (M-67); `career_conversation` 71 Haiku; `evidence_chat` (coach turns included) 170 Haiku; `resume_summary_tool` 136 gpt-5-mini; `career_journey` 1 gpt-5-mini; `growth_plan` and `growth_chat`: no Live calls yet |
+| Definition / denominator | `model_execution` rows by stage and `model` |
+| Sample | All calls of one account |
+| Period | 2026-10-25 → 2026-10-31 |
+| Source | Read-only query on the production host, 2026-10-31 |
+| Kind | Telemetry |
+| System state | Live |
+| Limits | Single user. Shows the model each stage actually ran on, which the seed alone does not settle ([D-27](05-discrepancies.md#d-27)). The Growth stages' model on Live is unverified until they are called. |
+
+<a id="m-69"></a>
+### M-69 — Living-résumé answer cost on Live
+
+| Field | |
+|---|---|
+| Value | 14 answers through links (not owner previews): mean model-call cost $0.00066, highest $0.0015; with a posting $0.0008–0.0015. Owner previews: 5, highest $0.0018 (with a posting). Mean time 2–8 s per kind of answer. All `career_conversation` calls since 2026-10-25: 71, $0.0434 in all (mean $0.0006), all Claude Haiku |
+| Definition / denominator | `shared_conversation_turn` rows joined to their `model_execution` row: count, mean `cost_usd` and mean `seconds`, by preview, basis and whether a posting was sent |
+| Sample | 14 visitor answers and 5 owner previews on one account's links |
+| Period | 2026-10-30 23:00 UTC, some hours before the rename (`4555460`, authored 2026-10-31 06:29 UTC) → 2026-10-31; stage totals from 2026-10-25 |
+| Source | Read-only query on the production host, 2026-10-31 |
+| Kind | Telemetry |
+| System state | Live (posting answers in a résumé's shape, Claude Haiku) |
+| Limits | Visitors are third parties: aggregates only, no text. Small sample. [M-44](#m-44) ($0.0047) was the earlier engine: not a trend. |
+
+<a id="m-70"></a>
+### M-70 — Career Chat reads on Live
+
+| Field | |
+|---|---|
+| Value | 40 chat turns, 1 of which read the account; 336 `chat_reads_route` Jev questions recorded, $0.0071 in all, median 0.2 s each |
+| Definition / denominator | `evidence_chat_turn` rows with a `reads` entry ÷ all turns; `model_execution` rows with stage `chat_reads_route` (cache hits write no row) |
+| Sample | One account's chat turns |
+| Period | Since the Live deploy of `88123b4` (2026-10-28 18:45 UTC) → 2026-10-31 |
+| Source | Read-only query on the production host, 2026-10-31 |
+| Kind | Telemetry |
+| System state | Live |
+| Limits | Single user, three days. Routing accuracy is not measured ([A-104](03-claim-index.md#a-104)). |
+
+<a id="m-71"></a>
+### M-71 — Application chat on Live
+
+| Field | |
+|---|---|
+| Value | 20 writer calls (19 Claude Haiku, 1 gpt-5-mini), $0.029 in all, median 9.3 s per call; 6 question readings (Haiku), $0.005 |
+| Definition / denominator | `model_execution` rows with stages `application_chat` and `application_question`: count, sum of `cost_usd`, median `seconds` |
+| Sample | One account |
+| Period | 2026-10-27 (first Live call) → 2026-10-31 |
+| Source | Read-only query on the production host, 2026-10-31 |
+| Kind | Telemetry |
+| System state | Live |
+| Limits | Single user. Excludes the Jev readings and embeddings an answer also uses. |
+
+<a id="m-72"></a>
+### M-72 — Application chat evaluation
+
+| Field | |
+|---|---|
+| Value | Five questions on two employers' opportunities, scored by code on ten criteria. Measured spend $0.5036 (nine evaluation runs and calibration) and $0.1311 (second story). In the last run every case drafted from checked evidence or asked one focused question; an answer limited to 600 characters came back at 701, then 441, then 519 characters; a 400–600-word answer went from 151 words to 273 fully supported words. A first turn on a question takes 30–70 s |
+| Definition / denominator | Per-criterion pass/fail by a code rubric (`app/apply/rubric.py`); spend is the sum of `cost_usd` of the runs |
+| Sample | 5 questions; nine runs plus a second story |
+| Period | 2026-10-27 |
+| Source | `experiments/application_chat_log.md` (commits `22451ca`, `36d9211`) |
+| Kind | Controlled experiment |
+| System state | Beta copy of one Live account; the nine evaluation runs on gpt-5-mini (the assignment was not in force), the second story on Claude Haiku |
+| Limits | One account's record; a code rubric, not people. The log's own words: "Not yet at the baselines' prose quality". |
+
+<a id="m-73"></a>
+### M-73 — Meaning questions calibration
+
+| Field | |
+|---|---|
+| Value | Thresholds set against 106 messages; "Let's come back to this" read 0.90 as leaving, a story with "moved on" in it 0.32 |
+| Definition / denominator | Jev's probability for each meaning question on each message, against the meaning the message had |
+| Sample | 106 messages from one account (its Live messages and varied phrasings) |
+| Period | 2026-10-26/27 |
+| Source | Commit `0018434`; `tests/journey/test_heard.py` (`BETA` fixed data) |
+| Kind | Controlled experiment (calibration) |
+| System state | Beta |
+| Limits | One account's phrasing. The `heard.py` docstring gives older readings for the same two messages ([D-32](05-discrepancies.md#d-32)). |
+
+<a id="m-74"></a>
+### M-74 — Pasted application questions
+
+| Field | |
+|---|---|
+| Value | Pasted form questions read 0.41–0.54 as a new question; answers and requests 0.07 or less; a question about a draft 0.21 (Beta). The line moved from 0.45 to 0.35 |
+| Definition / denominator | Jev's stored "new question" reading on application-chat messages |
+| Sample | Every stored reading of Live application chats (one account) plus one Beta calibration message |
+| Period | 2026-10-30 |
+| Source | Commit `8d92b75`; `tests/journey/test_heard.py` (`LIVE_QUESTIONS`) |
+| Kind | Telemetry recorded in a commit |
+| System state | Live (readings), Beta (one calibration) |
+| Limits | One account; the margin above the line is thin ([A-76](03-claim-index.md#a-76)). |
+
+<a id="m-75"></a>
+### M-75 — Read-layer calibration
+
+| Field | |
+|---|---|
+| Value | Routing lines set on 52 asks phrased as people ask them and 11 ordinary messages, each line under its lowest real ask and above what it should not read; note readings set on the 187 gaps of Beta's rejected opportunities |
+| Definition / denominator | Jev's probability per read operation's question on each message; per kind question on each reviewer note |
+| Sample | 52 + 11 messages; 187 reviewer gaps |
+| Period | 2026-10-28 |
+| Source | `app/reads/route.py` and `app/reads/analysis.py` comments; commits `eb73d50`, `73416a8`, `c555871` |
+| Kind | Controlled experiment (calibration) |
+| System state | Beta (one account) |
+| Limits | Calibrated once; Jev is stubbed in every test ([A-104](03-claim-index.md#a-104)). |
+
+<a id="m-76"></a>
+### M-76 — Counting gaps for 71 résumés
+
+| Field | |
+|---|---|
+| Value | 86 s to build every review view for 71 résumés, which is why each job's gap count is kept |
+| Definition / denominator | Wall-clock time to build the review views from which the gap counts come |
+| Sample | 71 résumés |
+| Period | 2026-10-27 |
+| Source | Commit `05abced`; `app/journey/standing.py` docstring |
+| Kind | Measured run |
+| System state | Beta |
+| Limits | One account's résumés. Pages can still pay at render on a cache miss ([D-35](05-discrepancies.md#d-35)). |
+
+<a id="m-77"></a>
+### M-77 — An introduction drafted from 35 pieces
+
+| Field | |
+|---|---|
+| Value | One introduction drafted from 35 pieces of the record, including leftover test text |
+| Definition / denominator | Record pieces the coaching call drew on for one draft |
+| Sample | One Live coaching conversation |
+| Period | 2026-10-25 |
+| Source | Commit `291517d` |
+| Kind | Measured run (a Live observation recorded in a commit) |
+| System state | Live, before claims-only answers |
+| Limits | One case; it motivated [A-63](03-claim-index.md#a-63). |
+
+<a id="m-78"></a>
+### M-78 — Page said 4 gaps, chat said 2
+
+| Field | |
+|---|---|
+| Value | The opportunity page said 4 gaps while the chat said "2 gaps to go": two of the four were one theme, and a just-saved story still read light |
+| Definition / denominator | Gap count on the page vs the chat for one opportunity |
+| Sample | One opportunity |
+| Period | 2026-10-30 |
+| Source | Commit `798fbf9` |
+| Kind | Measured run (a Live observation recorded in a commit) |
+| System state | Live, before `798fbf9` |
+| Limits | One case; it motivated [A-78](03-claim-index.md#a-78). |
+
+<a id="m-79"></a>
+### M-79 — Test suite at the described commit
+
+| Field | |
+|---|---|
+| Value | Full suite on the Live code `00eac95`: 3,926 passed, 142 skipped, 0 failed in 652 s (the runs before, on `821b151`: 3,920 passed; on `79658ad`: 3,919 passed; each 142 skipped, 0 failed). Static count: 3,548 test functions in 230 files at `00eac95` (3,541 at `79658ad`; 3,167 in 209 at `7322289`) |
+| Definition / denominator | The suite's own pass/skip/fail result; static count of `def test_` under `tests/`, parametrization not expanded |
+| Sample | — |
+| Period | 2026-10-31, before the deploy of `00eac95` |
+| Source | Session record (run); `tests/` (count) |
+| Kind | Session record + count |
+| System state | Local suite on the exact Live code |
+| Limits | Counts are size, not quality (rule 3). Functions ≠ collected cases. Many tests stand in for the model and Jev; some test summary code no Live path calls ([D-26](05-discrepancies.md#d-26)). Skip reasons not re-audited since [M-30](#m-30). |
+
+<a id="m-80"></a>
+### M-80 — Same-work outcome completion
+
+| Field | |
+|---|---|
+| Value | Adding a story's outcome from other pieces of the same work gave borderline readings at about +1 s and +60% tokens; not adopted |
+| Definition / denominator | Time and tokens of one living-résumé answer with and without the completion step |
+| Sample | One Live answer, reproduced exactly |
+| Period | 2026-10-31 |
+| Source | Commit `b8d8cf2` |
+| Kind | Replay |
+| System state | One Live answer's inputs, replayed (the commit does not say on which system) |
+| Limits | One answer ([A-119](03-claim-index.md#a-119)). |
+
+<a id="m-81"></a>
+### M-81 — Growth suggestions on Beta
+
+| Field | |
+|---|---|
+| Value | One Suggest action plans call for 15 Growth items, $0.0027 (Claude Haiku) |
+| Definition / denominator | `model_execution.cost_usd` of the one `growth_plan` call |
+| Sample | One call |
+| Period | 2026-10-30 |
+| Source | Session record |
+| Kind | Session record |
+| System state | Beta |
+| Limits | One call. No Live call yet ([M-68](#m-68)). |
+
+<a id="m-82"></a>
+### M-82 — Portfolio documents a visitor asks about
+
+| Field | |
+|---|---|
+| Value | **Calibration:** for "Can you summerize case study 1?" its document ranked 18th of 55 by content and 2nd by name; Jev read it 0.90, and 0.92 for the follow-up "I want you to summerize it."; every case study read 0.56–0.76 for "the case studies"; no document read above 0.04 for a question about what I built at a past employer; documents outside both short lists read 0.51–0.68 at worst. **Replay:** of four requests for a portfolio document, before the change none was answered from the document (the answers said they couldn't show or summarize it); after it, 4 of 4 were ("the case studies" summarized all six), and the control question drew no portfolio. $0.0011–0.0017 a model answer; $0.022 for the whole validation, Jev and embeddings included |
+| Definition / denominator | Ranks by cosine of the message (with the one before it) to each document's name, and to its sections' stored vectors; Jev's probability for `portfolio.ASKS_ABOUT`; an answer counts as from the document when its cited portfolio artifacts are that document's parts |
+| Sample | One portfolio (55 public documents); six messages for calibration; a seven-message Live conversation replayed twice |
+| Period | 2026-10-31 |
+| Source | Commits `d6e7c36`, `00eac95` (`app/portfolio.py` comment); session record of the Beta runs |
+| Kind | Calibration and replay |
+| System state | Beta, with the owner's portfolio |
+| Limits | One portfolio and one conversation. The thresholds are set on these readings, not tested on another portfolio. |
 

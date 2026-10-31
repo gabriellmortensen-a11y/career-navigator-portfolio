@@ -13,7 +13,7 @@ Behind it sits the July 2026 layered documentation. Everything since is in [EVOL
 | **Also covers** | The July predecessor repository (last commit `ba28bf1`, 2026-08-06; 112 commits; never deployed) and a short-lived observability side project (8 commits, 2026-08-13, last `dd881b7`) |
 | **Earliest product documents** | Knowledge layer **v2.2**, Product layer **v3.0** and Application layer **v3.0**, all stamped 2026-07-08, committed into the predecessor on 2026-07-29/31 ([H-01](03-claim-index.md#h-01)) |
 | **Contents** | A fact ledger of 705 facts, each classified (616 proven, 42 strongly implied, 42 needing the owner, 5 owner-supplied) with a publish status. Also a quantitative ledger of 231 numbers, a chronology, generations G0–G11 of the architecture, 45 failed approaches and reversals, a contradiction register (C-1…C-11), a publication-risk audit (49 findings), a case-study skeleton and diagrams A–H |
-| **Owner accounts** | GAB-001 (division of labour: I wrote no code), GAB-002 (delegated selection), GAB-003 (a derived index is not evidence), GAB-004 (how Bounded Fit became the product), GAB-005 (why the product exists) |
+| **Owner accounts** | GAB-001 (division of labor: I wrote no code), GAB-002 (delegated selection), GAB-003 (a derived index is not evidence), GAB-004 (how Bounded Fit became the product), GAB-005 (why the product exists) |
 
 ## How this portfolio uses it
 
@@ -38,7 +38,7 @@ Behind it sits the July 2026 layered documentation. Everything since is in [EVOL
 | Check | Result |
 |---|---|
 | Commit hashes cited for key historical claims exist (`git cat-file -e`) | 113 of 113, across the three earlier repositories |
-| Quoted numbers and phrases in 25 key commit bodies match | 73 of 73 (four after normalising line wraps) |
+| Quoted numbers and phrases in 25 key commit bodies match | 73 of 73 (four after normalizing line wraps) |
 | QC-1 contamination and yield re-summed at both sources (commit body; observability fixture) | Match: 141/285 = 49.47% → 5/138 = 3.62%; 56/285 = 19.65% → 63/138 = 45.65% ([M-01](04-metric-ledger.md#m-01)) |
 | Census figures (commits, trailers, guard counts) | As stated |
 
@@ -66,4 +66,6 @@ Behind it sits the July 2026 layered documentation. Everything since is in [EVOL
 beta4 38f4bbf (2026-09-29, baseline) ─► 23 commits ─► beta4 6a9ab0c (2026-10-02, last)
         └─ uncommitted experiments V2-1033…1061 ─► extraction 0a83529 (2026-10-03, new repository)
               ─► 683 non-merge commits ─► Live 7322289 (2026-10-24)  ≡ Beta 2a5f749 (identical tree)
+              ─► 2026-10-28: Live becomes its own line, rebuilt from Beta's commits by cherry-pick
+              ─► Live 00eac95 (2026-10-31), described by release 2026.10.1
 ```

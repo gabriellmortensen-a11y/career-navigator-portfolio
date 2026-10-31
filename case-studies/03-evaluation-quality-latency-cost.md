@@ -16,16 +16,16 @@ requirements, with named measurement gaps.
 
 ## Customer problem and context
 
-Every useful thing the product does rests on one judgement repeated thousands of times: **does this
+Every useful thing the product does rests on one judgment repeated thousands of times: **does this
 piece of the person's evidence establish this requirement?** It drives the assessment, the gap list,
 which stories reach a résumé, interview prep and job screening.
 
-In early October 2026 that judgement was a language-model call per candidate:
-- One posting took **1,164 judgements, 105 calls, 267 s and $0.45**
+In early October 2026 that judgment was a language-model call per candidate:
+- One posting took **1,164 judgments, 105 calls, 267 s and $0.45**
   ([M-22](../evidence/04-metric-ledger.md#m-22)).
 - The verdicts were unstable. The same input could flip between runs.
 - The earlier build had already shown how misleading unstable verdicts are. Three runs of one job
-  read 78%, 64% and 70%, because crashed judgements were displayed as "missing"
+  read 78%, 64% and 70%, because crashed judgments were displayed as "missing"
   ([H-06](../evidence/03-claim-index.md#h-06)).
 
 A person applying to many jobs needs this to be fast, cheap and stable, or the product is unusable.
@@ -54,11 +54,11 @@ A person applying to many jobs needs this to be fast, cheap and stable, or the p
 
 | Approach | Measured result | Fate |
 |---|---|---|
-| Exhaustive model review of every candidate | 1,164 judgements, $0.45, 267 s per posting | Replaced |
+| Exhaustive model review of every candidate | 1,164 judgments, $0.45, 267 s per posting | Replaced |
 | Deterministic and lexical validators (earlier build) | 5–7 of 17 correct, about chance; a model validator got 13/17 ([M-33](../evidence/04-metric-ledger.md#m-33)) | Rejected |
 | A hosted joint reranker (Voyage) | Rank correlation only 0.365 with the dense ordering and 0.359 with the cascade; depth 22 to keep the reference top 3 ([M-28](../evidence/04-metric-ledger.md#m-28)) | Not promoted |
 | Jev, a probability model asked two fixed, pre-registered questions | Depth 17 on the same population; p50 146 ms ([M-28](../evidence/04-metric-ledger.md#m-28)) | Became the reader and selector |
-| Named-artifact routing | Routed result equalled the fallback on 47/47 pairs ([M-40](../evidence/04-metric-ledger.md#m-40)) | Not built |
+| Named-artifact routing | Routed result equaled the fallback on 47/47 pairs ([M-40](../evidence/04-metric-ledger.md#m-40)) | Not built |
 | A Jev filter before the costly review | 16.4% of 122 requirement × role pairs would have lost evidence ([M-37](../evidence/04-metric-ledger.md#m-37)) | Refuted |
 
 The experiments shared one discipline. Each question was fixed in code before any score was seen,
@@ -68,10 +68,10 @@ truth, and every write-up says so.
 
 ## Decision and reasoning
 
-The judgement was rebuilt in three steps; the first two were measured.
+The judgment was rebuilt in three steps; the first two were measured.
 
 1. **Read less, once** (2026-10-05). Six pieces per requirement, read once, eight calls in parallel:
-   **1,164 → 68 judgements, 105 → 15 calls, 267 → 46.1 s, $0.4507 → $0.0385** on the same posting
+   **1,164 → 68 judgments, 105 → 15 calls, 267 → 46.1 s, $0.4507 → $0.0385** on the same posting
    ([M-22](../evidence/04-metric-ledger.md#m-22)).
 2. **Let Jev decide the clear cases** (2026-10-12). Cosine takes 24 candidates and Jev scores them.
    Clear cases are decided without a model; the model reasons only about the in-between. On 309
@@ -119,7 +119,7 @@ through candidates and recommends without switching ([P-07](../evidence/03-claim
 ## Verification: guarding against measuring noise
 
 The most important evaluation result in this project was a **reversal**:
-1. An unattended optimisation loop accepted a "better" résumé policy on a one-major-finding
+1. An unattended optimization loop accepted a "better" résumé policy on a one-major-finding
    difference.
 2. Four blind readings of an *unchanged* artifact ranged by **up to 3 major findings**
    ([M-26](../evidence/04-metric-ledger.md#m-26)).
@@ -135,7 +135,11 @@ The most important evaluation result in this project was a **reversal**:
 | Language-model cost of a résumé | ≈ $0.11 | 32 Live résumés ([M-03](../evidence/04-metric-ledger.md#m-03)) |
 | Résumé wall clock | median 207 s | Same ([M-05](../evidence/04-metric-ledger.md#m-05)) |
 | Evidence-chat call | mean $0.0033, p50 11.5 s | 108 Live calls ([M-21](../evidence/04-metric-ledger.md#m-21)) |
-| Chart My Course | No language-model calls | Jev + embeddings + code ([A-05](../evidence/03-claim-index.md#a-05)) |
+| Chart My Course | No language-model calls | Jev + embeddings + code ([A-05](../evidence/03-claim-index.md#a-05)). *Note, 2026-10-31: since 2026-10-27, one stated exception reads a line that lists several asks ([DEC-47](../product/07-decision-log.md#dec-47), [M-67](../evidence/04-metric-ledger.md#m-67))* |
+
+*Note, 2026-10-31: the résumé figures above are from 2026-10-21 → 10-24. After the 2026-10-29 speed
+route a résumé run is a different system state, reported side by side, not as a trend
+([M-60](../evidence/04-metric-ledger.md#m-60)).*
 
 **The cheapest path also agreed better with the reference available.** Jev kept more of the
 directly relevant evidence than embedding similarity did, measured against a model reader's
@@ -163,7 +167,7 @@ evidence didn't have. That effect was not measured separately.
 1. **"Quote measured, never estimated"** became a rule after I was told a chat turn cost $0.02.
    That was the estimate passed to a spend check; it measured about $0.004 ([M-21](../evidence/04-metric-ledger.md#m-21)). The earlier build's
    reservations had run 9.2× actual charges ([M-32](../evidence/04-metric-ledger.md#m-32)).
-2. **"No null model, no measurement"** stopped an optimiser from shipping noise.
+2. **"No null model, no measurement"** stopped an optimizer from shipping noise.
 3. **The cost conversation changed from "which model is cheapest" to "which decisions need a model
    at all".** The biggest savings came from removing model calls from ranking and state decisions,
    not from swapping models.

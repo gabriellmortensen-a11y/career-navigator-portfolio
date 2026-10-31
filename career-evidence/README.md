@@ -72,14 +72,14 @@ $0.0018, plus the writing check's editor call or calls. It is not a measured fig
 | 9 | Data-loss incident → forced row-level security | [H-17](../evidence/03-claim-index.md#h-17), [P-12](../evidence/03-claim-index.md#p-12) |
 | 10 | Fix defects at the source | [Product 02 §3](../product/02-principles.md#3-defects-are-fixed-at-their-source-never-papered-over) |
 | 11 | Probability model selects; models reason and write | [Product 02 §4](../product/02-principles.md#4-jev-selects-models-reason-and-write) |
-| 12 | Accepted redesign: 1,164 → 68 judgements; 267 → 46 s; $0.45 → $0.04 | [M-22](../evidence/04-metric-ledger.md#m-22) |
+| 12 | Accepted redesign: 1,164 → 68 judgments; 267 → 46 s; $0.45 → $0.04 | [M-22](../evidence/04-metric-ledger.md#m-22) |
 | 13 | 461 vs 413 of 531; 93% agreement | [M-23](../evidence/04-metric-ledger.md#m-23) |
 | 14 | Readings ranged by up to 3 major findings; acceptance reversed | [M-26](../evidence/04-metric-ledger.md#m-26) |
 | 15 | 48/48 vs 19/48 (measurement only today) | [M-25](../evidence/04-metric-ledger.md#m-25) |
 | 16 | Recruiter-selects flow; writer never sees requirements | [A-11](../evidence/03-claim-index.md#a-11), [A-12](../evidence/03-claim-index.md#a-12) |
 | 17 | Bullets name their story; cross-role refusal | [A-13](../evidence/03-claim-index.md#a-13), [K-02](../evidence/03-claim-index.md#k-02), [M-56](../evidence/04-metric-ledger.md#m-56) |
 | 18 | Summary shape: 73% / 96% → 0 of 20 | [M-17](../evidence/04-metric-ledger.md#m-17) |
-| 19 | "Whatever gives the most bullets": 18–20 → 10–13 bullets, reverted | [M-18](../evidence/04-metric-ledger.md#m-18) |
+| 19 | The most bullets: 18–20 → 10–13 bullets, reverted | [M-18](../evidence/04-metric-ledger.md#m-18) |
 | 20 | Eligibility never screened; degree as risk | [A-04](../evidence/03-claim-index.md#a-04) |
 | 21 | Gap = a reader would pass; 84% vs 74% on 19 résumés | [A-06](../evidence/03-claim-index.md#a-06), [M-13](../evidence/04-metric-ledger.md#m-13) |
 | 22 | The model reviewers' actual verdicts override the estimate | [A-07](../evidence/03-claim-index.md#a-07) |

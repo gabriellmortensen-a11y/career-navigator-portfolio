@@ -18,4 +18,6 @@ MMDC=/path/to/mmdc tools/check_mermaid.sh --export
 | [architecture__05-discovery-to-tracking__1.svg](architecture__05-discovery-to-tracking__1.svg) | [05 Discovery to tracking](../../architecture/05-discovery-to-tracking.md) |
 | [architecture__06-measurement-and-feedback__1.svg](architecture__06-measurement-and-feedback__1.svg) | [06 Measurement and feedback](../../architecture/06-measurement-and-feedback.md) |
 | [architecture__07-historical-and-planned__1.svg](architecture__07-historical-and-planned__1.svg) | [07 Historical](../../architecture/07-historical-and-planned.md) |
-| [architecture__07-historical-and-planned__2.svg](architecture__07-historical-and-planned__2.svg) | [07 Planned](../../architecture/07-historical-and-planned.md) |
+| [architecture__07-historical-and-planned__2.svg](architecture__07-historical-and-planned__2.svg) | [07 Replaced since 2026.10.0](../../architecture/07-historical-and-planned.md) |
+| [architecture__07-historical-and-planned__3.svg](architecture__07-historical-and-planned__3.svg) | [07 Planned](../../architecture/07-historical-and-planned.md) |
+| [architecture__08-interview-coach__1.svg](architecture__08-interview-coach__1.svg) | [08 Interview coach](../../architecture/08-interview-coach.md) |

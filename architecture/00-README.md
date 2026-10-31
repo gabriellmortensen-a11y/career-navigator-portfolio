@@ -1,16 +1,17 @@
 # Architecture — diagrams of the implemented system
 
-*Diagrams describe Live `7322289` (2026-10-24) unless marked otherwise. Narrative: [Product 03](../product/03-system-architecture.md).*
+*Diagrams describe Live `00eac95` (2026-10-31) unless marked otherwise. Narrative: [Product 03](../product/03-system-architecture.md).*
 
 | # | Diagram | Shows |
 |---|---|---|
 | 01 | [Components and boundaries](01-components.md) | Processes, modules, the governed model boundary, the database, external services |
 | 02 | [Evidence admission and acceptance](02-evidence-admission.md) | Every path into the career record and who decides |
-| 03 | [Requirement analysis and evidence matching](03-requirement-analysis-and-matching.md) | Posting → requirements → stories → assessment, with no language model |
+| 03 | [Requirement analysis and evidence matching](03-requirement-analysis-and-matching.md) | Posting → requirements → stories → assessment, with one stated language-model exception |
 | 04 | [Résumé planning, writing and review](04-resume-flow.md) | What each stage sees; where requirement text goes and where it never goes |
 | 05 | [Discovery through application tracking](05-discovery-to-tracking.md) | Search → screen → assess → write → kit → fill → submit → status |
 | 06 | [Measurement and feedback](06-measurement-and-feedback.md) | Call ledger, observability, model check, calibration, release loop |
 | 07 | [Historical and planned architecture](07-historical-and-planned.md) | Earlier generations (not current) and planned work (not built), kept apart |
+| 08 | [Interview coach](08-interview-coach.md) | Role read from the posting alone → verified claims per need → coaching turn → footnoted draft lines; what a message means, disputes, told work and interview rounds |
 
 ## Legend (used in every diagram)
 

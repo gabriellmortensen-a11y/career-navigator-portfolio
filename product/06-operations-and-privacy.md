@@ -1,12 +1,13 @@
 # Product 06 — Operations and privacy
 
-*Product 4.0 · describes Live `7322289` (2026-10-24)*
+*Product 4.1 · describes Live `00eac95` (2026-10-31)*
 
 ## Release process
 
 ```text
 change on main ─► full local suite ─► Beta deploy ─► product owner uses it on Beta ─► approved commits
-                                                                                     cherry-picked to live-approved
+                                                                                     cherry-picked onto Live's own
+                                                                                     branch for the release
                                                      full suite on that exact code ─► Live deploy (--confirm)
 ```
 
@@ -14,8 +15,9 @@ change on main ─► full local suite ─► Beta deploy ─► product owner u
 |---|---|---|
 | Every change goes to Beta first; Live only after I've looked at it on Beta | 2026-10-14 | That day, several direct-to-Live changes broke things I found while using Live |
 | Full suite on the exact Live code before any Live deploy | 2026-10-19 | I had asked for "no suite" pushes for speed, then reversed it |
-| Beta and Live run the same code and schema; only the labs differ | 2026-10-21 | "Get parity between the two so only one test needs to happen" |
-| Live runs from a branch of approved commits (`live-approved`) | 2026-10-14 | Main can hold Beta work I haven't approved |
+| Beta and Live run the same code and schema; only the labs differ (replaced on 2026-10-28 by the next row) | 2026-10-21 → 10-27 | I wanted parity between the two, so that one test run is enough |
+| Live is its own line: rebuilt from Beta's approved commits by cherry-pick, with its own copies of migrations, and without the evidence timeline, career themes and major outcomes | 2026-10-28 | "Leave the evidence timeline, career themes, and major outcomes off of live." (my words, `88123b4`; [P-37](../evidence/03-claim-index.md#p-37), [DEC-50](07-decision-log.md#dec-50)) |
+| Live runs from a branch of approved commits: `live-approved` (last pushed 2026-10-25), and from 2026-10-28 a branch per release (`live-chat-reads`, `live-summaries`, `live-kept`) | 2026-10-14 | Main can hold Beta work I haven't approved ([P-11](../evidence/03-claim-index.md#p-11)) |
 
 `ship.sh` encodes the first half: a clean tree, the full suite (it refuses on failure), push, then a
 Beta deploy. It stops there: "the step between Beta and Live is a person opening the product"
@@ -49,6 +51,9 @@ script itself is untested; only the document publish and restore is.
   Before that, a résumé preparation running in the web process made pages take 4–6 s instead of
   about 1 s on a 2-core host ([M-29](../evidence/04-metric-ledger.md#m-29)).
 - **A visible queue.** Each person gets at most two model jobs at a time, and the queue is visible.
+- **New kinds of work** since Product 4.0 use the same mechanism: writing a missing résumé summary,
+  refreshing a GitHub repository, suggesting Growth plans, and recounting an opportunity's label
+  ([P-09](../evidence/03-claim-index.md#p-09)).
 
 ## Monitoring
 
@@ -75,7 +80,9 @@ script itself is untested; only the document publish and restore is.
 | Search providers | Rows keep the query and a result count, never pages or keys |
 | Job-discovery queries | Built from roles, kinds of work and places; health, disability and accommodation terms are dropped, and the person is told |
 | Hosted job index | Never sent résumé or evidence text; results never shared across accounts |
-| Shared conversation links | Token stored as a digest; scope computed on the server before retrieval; per-link spend cap; draft until activated; revocable |
+| Living résumé links (renamed from shared conversation links, 2026-10-31) | Token stored as a digest; scope computed on the server before retrieval; per-link spend cap; draft until activated; revocable. The scope also covers the profile's education and certifications, never a credential's number or a note, and the portfolio artifacts the owner made public ([A-55](../evidence/03-claim-index.md#a-55), [A-118](../evidence/03-claim-index.md#a-118)). The owner sees what each visitor asked and how each answer was derived ([A-117](../evidence/03-claim-index.md#a-117)) |
+| GitHub portfolio | Public repositories only, read through GitHub's public API with no token stored. Nothing is read until the owner approves a repository; each artifact stays private until they make it public ("Make all public" does it for one repository at once, each noted in its history). Files that could hold secrets are never fetched, and a section that looks like one is never kept ([A-120](../evidence/03-claim-index.md#a-120), [P-34](../evidence/03-claim-index.md#p-34)). Repository text reaches a model only as a labeled, untrusted block ([P-35](../evidence/03-claim-index.md#p-35)). Links to evidence are suggested by Jev and decided by the owner ([K-34](../evidence/03-claim-index.md#k-34)). Disconnecting stops all serving at once |
+| Career Chat reads | Read-only operations under the same row-level security as every page; a test checks nothing is written. Never read, by having no operation that reads them: secrets, security records, raw provider payloads, prompts, other accounts, admin data, a model's or Jev's working, saved answers about work authorization, sponsorship, age, pay, logistics and self-identification, and connections' contact details ([A-102](../evidence/03-claim-index.md#a-102), [P-33](../evidence/03-claim-index.md#p-33)). The document listing coverage describes Beta-only pages ([D-29](../evidence/05-discrepancies.md#d-29)) |
 | ChatGPT connector | Read-only tools; audit keeps names, ids, times and sizes, never arguments or answers |
 | API keys | Read from the environment or key files outside the repository; setter scripts read them with hidden input; never logged |
 | Your data | Settings › Your data: export, delete by category, close account |

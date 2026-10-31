@@ -1,8 +1,84 @@
 # Evidence 06 — Verification log
 
+How the evidence behind each release was gathered and checked, and which publication checks it
+passed. Investigations were run by Claude Code agents at my direction. Every step was read-only, and
+no model or API spend was incurred to produce this portfolio.
+
+## Release 2026.10.1 (2026-10-31)
+
+### 2026.10.1 · Code and history
+
+| Scope | Method | Result |
+|---|---|---|
+| Current system | Live `79658ad` (2026-10-31) checked out read-only, plus `git log` / `git show` / `git diff 7322289`. Five investigations: Knowledge, Product and History claims with every discrepancy; Applications claims and documents; the interview coach, application chat and opportunities; résumé writing; Navi, Career Chat reads, Growth, the living résumé and the GitHub portfolio. Each cited file, test and commit. Three commits follow `79658ad` on Live: "Make all public" (`821b151`) and the summaries of a portfolio document a visitor asks about (`d6e7c36`, `00eac95`). I wrote and read them in full, and the release describes `00eac95` | New claims `K-31`–`K-34`, `P-33`–`P-37`, `A-61`–`A-123`; discrepancies `D-25`–`D-39` |
+| Earlier claims | Each re-checked at the new commit | Knowledge 26: 21 hold, 5 with moved references. Product 24: 21 hold, 1 moved, 2 reworded. History 18: all hold. Applications 48: 27 hold, 8 moved, 11 reworded, 2 changed status (`A-52`, `A-53`). Discrepancies: none fixed, 10 updated |
+| Rebuilt history | Live was rebuilt from Beta's commits by cherry-pick from 2026-10-28, so `7322289` is not an ancestor of `00eac95`. Cited commits outside Live's history were matched with `git patch-id --stable` | 14 cited hashes replaced by their identical copies |
+| Beta | Beta `c1befd7` read only to tell Beta-only work apart | `A-97`–`A-100` Experimental |
+| Test surface | Static count of `def test_` under `tests/` | 3,541 functions in 230 files at `79658ad` ([M-79](04-metric-ledger.md#m-79)) |
+
+### 2026.10.1 · Live telemetry (read-only)
+
+Queried on 2026-10-31 on the production host in a read-only transaction, aggregates only, my account
+only. No record text was selected: no message, reply, posting, requirement or evidence column.
+
+| Metric | Definition |
+|---|---|
+| [M-60](04-metric-ledger.md#m-60) | Complete `resume_generation_run` rows started after the Live deploy of `77acb9c` (2026-10-30 00:58 UTC, from the host's checkout history): count, mean, median, min and max of `cost_usd` and `seconds`; per run, `sum(cost_usd)` and `count(*)` from `model_execution` by stage, keyed by the run's selection |
+| [M-67](04-metric-ledger.md#m-67) | `model_execution` stage `requirement_division` by model since 2026-10-25; `job_demand.division` counts |
+| [M-68](04-metric-ledger.md#m-68) | `model_execution` grouped by stage and model since 2026-10-25 |
+| [M-69](04-metric-ledger.md#m-69) | `shared_conversation_turn` since 2026-10-30 23:00 UTC by preview, basis, posting present and artifacts present, joined to its `model_execution` row for cost and seconds |
+| [M-70](04-metric-ledger.md#m-70) | `evidence_chat_turn` rows since the Live deploy of `88123b4` (2026-10-28 18:45 UTC) with and without a `reads` entry; `model_execution` stage `chat_reads_route` |
+| [M-71](04-metric-ledger.md#m-71) | `model_execution` stages `application_chat` and `application_question` since 2026-10-25 |
+
+### 2026.10.1 · Test suite
+
+The full suite ran on the Live code `00eac95` on 2026-10-31, before its deploy, on a test copy of the
+schema: all passed ([M-79](04-metric-ledger.md#m-79)). It is a session record. The run is the
+release gate for the application, not something this portfolio re-ran.
+
+### 2026.10.1 · Publication checks
+
+| Check | Tool | Result |
+|---|---|---|
+| Every relative link and image resolves; every `#anchor` matches a heading or explicit anchor | `tools/check_links.py` | **Passed**: 2,404 links, 0 broken |
+| Every Mermaid diagram renders | `tools/check_mermaid.sh` (mermaid-cli 12.0.0), SVGs re-exported | **Passed**: 11 of 11 |
+| No credentials, private keys, emails, phone numbers, IP addresses, server paths, database URLs, environment files or the connections export; no unfinished-work markers | `tools/scan_sensitive.py` | **Passed**: 74 files, 0 findings |
+| No private term (the denylist kept outside the repository, now 63 terms) | `tools/scan_sensitive.py` with `PRIVATE_TERMS` | **Passed**: 0 findings |
+| No internal record identifiers (run, job, review, turn, link or account numbers) | `grep` | **Passed**: the only hits were durations ("66.5 s", "30–70 s") and a batch size |
+| The career-evidence file still imports | `tools/check_import.py` with Career Navigator's reader at `00eac95` | **Passed**: 1 role, 39 bullets |
+| US English throughout | A word-list conversion over prose, headings, tables and diagram labels; code, paths and quotes left as they are | 42 files converted |
+
+**Release run (2026-10-31):** `tools/check.sh` with `MMDC`, `PRIVATE_TERMS` and `APP_SRC` set, run after
+the review's corrections. All sections passed.
+
+### 2026.10.1 · Independent review
+
+A separate Claude Code agent, not one that wrote the release, reviewed it against the code at the
+described commit and the git history. It spot-checked 109 claims (all 71 new ones and 38 changed or
+carried ones); 88 held as written. Every linked ID resolved, all 192 cited commits exist, and the
+claim-index tallies matched. Everything it found was corrected before release:
+
+| Kind | Found | Examples of what changed |
+|---|---:|---|
+| Factual errors | 17 | The coach is given the posting's requirement lines when its role reading is missing or failed ([A-63](03-claim-index.md#a-63)); release notes keep fenced blocks ([P-34](03-claim-index.md#p-34)); requirement division is one call per posting, not per line; the summary retries cover server errors 500–504 only; a page render also asks Jev, not only embeddings ([D-35](05-discrepancies.md#d-35)) |
+| Overclaims | 10 | Four claims moved from Verified to Limited: [A-64](03-claim-index.md#a-64) (its known defect [D-31](05-discrepancies.md#d-31)), [K-28](03-claim-index.md#k-28) (a text-scan test), [P-36](03-claim-index.md#p-36) and [P-37](03-claim-index.md#p-37) (no targeted test); "never in the owner's voice" and "lengths only as they add up" narrowed to what code does |
+| Consistency | 11 | Window and period labels matched to their queries; time comparisons stated as different system states, not a trend; unledgered numbers removed |
+| Quotes | 4 | One misquote corrected to the commit's words; quotes found in no commit, rule or governed document became paraphrases, including eight carried over from 2026.10.0 |
+| Public safety | 0 | No company name, record identifier, hostname, record text or owner-set cap was added |
+
+### 2026.10.1 · What was not done
+
+- **The two withheld findings were not re-examined** ([D-02](05-discrepancies.md#d-02),
+  [D-17](05-discrepancies.md#d-17)). They stay withheld.
+- **No application pages rendered and no screenshots taken.**
+- **No model, search or scraping call made for this portfolio.** The telemetry queries were reads.
+- **Growth plans have not run on Live yet**, so the model they use there is unverified
+  ([M-68](04-metric-ledger.md#m-68)).
+
+## Release 2026.10.0 (2026-10-25)
+
 How the evidence behind release **2026.10.0** was gathered and checked (2026-10-25), and which
-publication checks it passed. Investigations were run by Claude Code agents at my direction. Every
-step was read-only, and no model or API spend was incurred to produce this portfolio.
+publication checks it passed. The sections below keep their numbers so earlier links still work.
 
 ## 1. Code and history
 
@@ -17,7 +93,7 @@ step was read-only, and no model or API spend was incurred to produce this portf
 
 | Commit | Figure |
 |---|---|
-| `8bedc4c`, `2068a41` | Evidence reading: 1,164 → 68 judgements; 105 → 15 calls; 267 → 46.1 s; $0.4507 → $0.0385 |
+| `8bedc4c`, `2068a41` | Evidence reading: 1,164 → 68 judgments; 105 → 15 calls; 267 → 46.1 s; $0.4507 → $0.0385 |
 | `d897201` | Jev top 4: 461 of 531 vs cosine 413; 93% agreement on 309 readings |
 | `766061f` | 84% / 74% and 79% / 58% on 19 reviewed résumés; 320 of 602 light written strong |
 | `4c984f8` | Pages at 4–6 s instead of ~1 s on a 2-core host |

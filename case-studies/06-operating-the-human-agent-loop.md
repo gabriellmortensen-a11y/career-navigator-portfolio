@@ -25,7 +25,7 @@ The busiest days had 50–73 commits
 **The loop:**
 1. I use the product on my real job search.
 2. I notice something wrong or missing.
-3. I describe the behaviour I want and the constraints.
+3. I describe the behavior I want and the constraints.
 4. The agent investigates, proposes, implements and tests.
 5. I check it on Beta.
 6. It ships, or it doesn't.
@@ -71,25 +71,27 @@ The agents wrote the scripts and tests that enforce those rules.
 | 2026-10-14 | Model spend was invisible: Jev recorded at $0, some calls unrecorded, failures erased by rollbacks | Each transport recorded itself differently, or not at all | Every call recorded at the governed boundary; spend and failure pages; alerts ([P-03](../evidence/03-claim-index.md#p-03), [P-18](../evidence/03-claim-index.md#p-18)) |
 | 2026-10-19 | I'd asked for "no suite" pushes for speed; then reversed it | Speed over safety | **The full suite on the exact Live code before any Live deploy** |
 | 2026-10-19 | Pages took 4–6 s while background work ran | Work threads in the web process on a 2-core host | A separate, lower-priority runner process ([M-29](../evidence/04-metric-ledger.md#m-29)) |
-| 2026-10-21 | Beta and Live had diverged; each change needed two test runs | Parallel histories | Unified: the same code, schema and documents, with only the labs different |
+| 2026-10-21 | Beta and Live had diverged; each change needed two test runs | Parallel histories | Unified: the same code, schema and documents, with only the labs different. *Replaced on 2026-10-28, when I kept three Beta-only features off Live: Live is now its own cherry-picked line ([P-37](../evidence/03-claim-index.md#p-37), [DEC-50](../product/07-decision-log.md#dec-50))* |
 
 ## Alternatives considered
 
 | Option | Why not |
 |---|---|
-| Review every diff myself | Not my role, and not where the value of the loop is. I review behaviour on Beta instead |
+| Review every diff myself | Not my role, and not where the value of the loop is. I review behavior on Beta instead |
 | Let the agent deploy to Live when tests pass | Tests passed when the product was wrong; many defects were found only by use |
 | Freeze features while hardening | Usage drove every important fix; freezing would have hidden the next defect |
 
 ## Decision and reasoning
 
-**I govern behaviour and gates; the agent governs code.** Concretely:
+**I govern behavior and gates; the agent governs code.** Concretely:
 
 1. **Rules live where agents read them.** The project's agent instructions hold the product rules,
    each with its date and the words I used. The baseline's lesson was that "documents do not help if
    a session never looks at them" ([H-12](../evidence/03-claim-index.md#h-12)).
 2. **Every rule has an enforcement point.** That might be a schema constraint, a contract test, a
    release script that stops at Beta, or a test that fails if a model is called in Chart My Course.
+   (Since 2026-10-27 that test allows exactly one stated exception, which I chose:
+   [A-05](../evidence/03-claim-index.md#a-05).)
    Prose alone wasn't enough.
 3. **The release gate is a person using the product.** `ship.sh` stops at Beta: "the step between
    Beta and Live is a person opening the product".
@@ -101,7 +103,9 @@ The agents wrote the scripts and tests that enforce those rules.
 
 - **Live deploys** come only from the `live-approved` branch, whose push history starts on
   2026-10-14 (75 pushes to 2026-10-25). That each push followed my use of the change on Beta is my
-  account; git records the pushes, not the approvals.
+  account; git records the pushes, not the approvals. *Note, 2026-10-31: since 2026-10-28 Live
+  deploys from a branch per release, rebuilt from Beta's approved commits by cherry-pick
+  ([P-11](../evidence/03-claim-index.md#p-11), [P-37](../evidence/03-claim-index.md#p-37)).*
 - **Deploys** back up the database, drain running work, publish governed documents with a snapshot,
   probe the site, and roll back automatically on failure ([P-10](../evidence/03-claim-index.md#p-10)).
 - **Contract tests pin the rules:**
@@ -112,7 +116,8 @@ The agents wrote the scripts and tests that enforce those rules.
   - "no model call" in the flows that must have none.
 - **Last recorded full run:** 3,135 passed, 0 failed, 141 skipped (2026-10-21). Most of the 141 skips audit data lost on 2026-10-05; the rest need private
   files or tools not present ([M-30](../evidence/04-metric-ledger.md#m-30)). This run result is a session
-  record, not a commit.
+  record, not a commit. *Note, 2026-10-31: the run for release 2026.10.1 is
+  [M-79](../evidence/04-metric-ledger.md#m-79).*
 
 ## Results
 
@@ -138,11 +143,11 @@ The agents wrote the scripts and tests that enforce those rules.
 - **Agents still drift.** Stale "Beta only" comments, outdated documents and the README's legacy
   pipeline are visible in this review ([D-03](../evidence/05-discrepancies.md#d-03),
   [D-18](../evidence/05-discrepancies.md#d-18)).
-- **One person is one reviewer.** No second human reviews behaviour.
+- **One person is one reviewer.** No second human reviews behavior.
 
 ## What I learned about the loop
 
-1. **The bottleneck moves to judgement.** When implementation is nearly free, the scarce skills are
+1. **The bottleneck moves to judgment.** When implementation is nearly free, the scarce skills are
    deciding what not to build, noticing when a fix is really a patch, and saying no to a passing
    test suite.
 2. **Rules need a home and an enforcement point**, or an agent will helpfully undo them.

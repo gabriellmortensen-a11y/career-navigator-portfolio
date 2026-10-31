@@ -1,7 +1,7 @@
 # Evolution — from the layer documents to the current application
 
 This is the story from the July 2026 documents, through the earlier build that the 2026-09-30
-retrospective described (the **baseline**), to Live `7322289` (2026-10-24). Every dated claim links
+retrospective described (the **baseline**), to Live `00eac95` (2026-10-31). Every dated claim links
 to the [claim index](evidence/03-claim-index.md) or [metric ledger](evidence/04-metric-ledger.md).
 The diagrammatic version is [Architecture 07](architecture/07-historical-and-planned.md).
 
@@ -17,7 +17,7 @@ The diagrammatic version is [Architecture 07](architecture/07-historical-and-pla
 | 07-17 → 08-06 | Predecessor: Markdown libraries in git, an Open WebUI front end | Truth lives in files a person edits | Slow (~183 s per run), single-user, never deployed ([H-02](evidence/03-claim-index.md#h-02)) |
 | 08-06 → 09-29 | Earlier build ("beta4"): web app, then hosted multi-user Live | A model may propose; only a person may approve | Measurement kept contradicting the product; evidence was being manufactured across roles; rules in prose kept being undone |
 | **09-29** | **Baseline** (`38f4bbf`) | Bounded Fit, capability addresses, one-press "Express" résumé | — |
-| 10-03 → 10-24 | Current application (extracted) | Authority in the schema; Jev selects, models write; fix at the source; assess before writing | This portfolio |
+| 10-03 → 10-31 | Current application (extracted) | Authority in the schema; Jev selects, models write; fix at the source; assess before writing | This portfolio |
 
 ## 1. Before software: the layer documents (2026-07-08)
 
@@ -64,7 +64,7 @@ response.
    - **QC-1:** the canonicalization step was citing context the system had put into its own prompt.
      The fix cut prompt-sourced citations from **49.47% to 3.62%** and raised admission yield from
      **19.65% to 45.65%** ([M-01](evidence/04-metric-ledger.md#m-01), [M-02](evidence/04-metric-ledger.md#m-02)).
-   - Rules followed: no paid calls in tests; a failed judgement is never a verdict.
+   - Rules followed: no paid calls in tests; a failed judgment is never a verdict.
 3. **The architecture was discovered, not designed** (08-10). It was reconstructed from code about
    100 commits in. The agent instructions grew to 1,030 lines, which is size, not quality ([M-50](evidence/04-metric-ledger.md#m-50)).
 4. **Retrieval went through seven generations.** One failure kept recurring: evidence with no index
@@ -133,15 +133,15 @@ understood. Do not copy the application and then try to remove the slop."**
   - four verification jobs reproduced exactly on independently written routing;
   - 117 contracts ran in 3.16 s, against 10,541 before ([M-49](evidence/04-metric-ledger.md#m-49));
   - a clean-room test boots the application with the old system's imports made to fail.
-- **Measured the same day:** an optimiser's "improvement" turned out to be inside evaluator noise (readings of an unchanged résumé ranged by up to 3 major findings), and was
+- **Measured the same day:** an optimizer's "improvement" turned out to be inside evaluator noise (readings of an unchanged résumé ranged by up to 3 major findings), and was
   reversed ([M-26](evidence/04-metric-ledger.md#m-26)).
 
-## 7. Since the extraction (2026-10-03 → 10-24)
+## 7. Since the extraction (2026-10-03 → 10-31)
 
 | Phase | Dates | What changed |
 |---|---|---|
 | Product from pipeline | 10-04 → 10-05 | One-button résumé; Change Documents as the only evidence writer ([K-10](evidence/03-claim-index.md#k-10)); accounts; **forced row-level security, built the same day an agent's script running as schema owner deleted 17,183 rows** ([H-17](evidence/03-claim-index.md#h-17)); exhaustive review replaced by six pieces read once ([M-22](evidence/04-metric-ledger.md#m-22)); deploy by named commit |
-| Review-centred job flow | 10-06 → 10-07 | Résumé review against a posting; What's Next; "relevance is not sufficiency"; Chart My Course |
+| Review-centered job flow | 10-06 → 10-07 | Résumé review against a posting; What's Next; "relevance is not sufficiency"; Chart My Course |
 | Journey, world, connections | 10-08 → 10-10 | My Journey; durable background work ([P-09](evidence/03-claim-index.md#p-09)); career world; LinkedIn import; Change Course with zero model calls ([A-58](evidence/03-claim-index.md#a-58)) |
 | New users; Jev over model calls | 10-10 → 10-12 | First five minutes; "Jev selects" ([M-23](evidence/04-metric-ledger.md#m-23)); requirement sift; prevention without extra calls |
 | **Stories + recruiter-selects** | 10-13 → 10-14 | Fragments glued into stories ([K-06](evidence/03-claim-index.md#k-06)); the project rules (fix at the source; Jev selects; one writer, one editor); the recruiter-selects résumé flow ([A-11](evidence/03-claim-index.md#a-11)); flagged evidence excluded |
@@ -149,21 +149,27 @@ understood. Do not copy the application and then try to remove the slop."**
 | Evidence chat | 10-14 → 10-16 | "Tell your record": propose, then Save ([K-13](evidence/03-claim-index.md#k-13)) |
 | Interview, research, runner, routing | 10-19 → 10-20 | Own questions; Jev-chosen interview evidence; company research; separate runner; eligibility never screened ([A-04](evidence/03-claim-index.md#a-04)); per-task models ([M-19](evidence/04-metric-ledger.md#m-19)) |
 | **Discovery to apply** | 10-20 → 10-21 | Discover Jobs ([A-30](evidence/03-claim-index.md#a-30)); apply kits and extension ([A-38](evidence/03-claim-index.md#a-38)); career-site index pilot |
-| Beta and Live unified | 10-21 | One code base, schema and set of documents; only the labs differ |
-| Tune and gap chat | 10-21 → 10-22 | Tune my evidence; guided gap discovery with code-decided stops ([A-08](evidence/03-claim-index.md#a-08)); prompt caching |
-| **Assess first** | 10-22 → 10-24 | Nothing writes a résumé without the Write press ([A-37](evidence/03-claim-index.md#a-37)); gap = what a reader would pass on ([A-06](evidence/03-claim-index.md#a-06)); a real reading overrides the estimate; themes; bullets bound to stories by schema ([A-13](evidence/03-claim-index.md#a-13)) |
+| Beta and Live unified | 10-21 | One code base, schema and set of documents; only the labs differ (until 10-28, below) |
+| Tune and gap chat | 10-21 → 10-22 | Tune my evidence (retired 10-30, below); guided gap discovery with code-decided stops ([A-08](evidence/03-claim-index.md#a-08)); prompt caching |
+| **Assess first** | 10-22 → 10-24 | Nothing writes a résumé without the Write press ([A-37](evidence/03-claim-index.md#a-37)); gap = what a reader would pass on ([A-06](evidence/03-claim-index.md#a-06)); a real reading overrides the estimate; themes; bullets bound to stories by schema ([A-13](evidence/03-claim-index.md#a-13)); the chat in a rail beside every page ([A-106](evidence/03-claim-index.md#a-106)) |
+| **Interview coach** | 10-25 → 10-26 | The role read from the posting alone first ([A-62](evidence/03-claim-index.md#a-62)); answers only from verified claims, every line footnoted ([A-63](evidence/03-claim-index.md#a-63), [A-64](evidence/03-claim-index.md#a-64)); the coach leads Interview Prep and the old preparation card goes ([A-71](evidence/03-claim-index.md#a-71), [D-39](evidence/05-discrepancies.md#d-39)); what a message means read by Jev, not phrase lists ([A-66](evidence/03-claim-index.md#a-66), [DEC-43](product/07-decision-log.md#dec-43)); one contract for every interview stage ([A-67](evidence/03-claim-index.md#a-67)); the Upcoming card ([A-72](evidence/03-claim-index.md#a-72)) |
+| Application chat; gaps go to the job | 10-27 | The application chat ([A-73](evidence/03-claim-index.md#a-73)); one stated model exception at Chart My Course, a line that lists several asks ([A-05](evidence/03-claim-index.md#a-05), [DEC-47](product/07-decision-log.md#dec-47)); a gap's saved story applied to the job at Save ([A-81](evidence/03-claim-index.md#a-81)); opportunity labels ([A-79](evidence/03-claim-index.md#a-79)) |
+| **Read layer; Live its own line; summaries rebuilt** | 10-28 | Career Chat reads the account through governed read-only operations ([A-102](evidence/03-claim-index.md#a-102), [DEC-49](product/07-decision-log.md#dec-49)); Live deployed from its own cherry-picked branch, without the evidence timeline, career themes and major outcomes ([P-37](evidence/03-claim-index.md#p-37), [DEC-50](product/07-decision-log.md#dec-50)); the professional and role summaries written from a supported positioning ([A-82](evidence/03-claim-index.md#a-82), [A-85](evidence/03-claim-index.md#a-85), [DEC-51](product/07-decision-log.md#dec-51)) |
+| Summaries placed as written; finished-line bullets | 10-29 | Summaries never replaced by a backup ([A-84](evidence/03-claim-index.md#a-84), [DEC-53](product/07-decision-log.md#dec-53)); a red button writes just a missing summary ([A-90](evidence/03-claim-index.md#a-90)); the speed route ([A-88](evidence/03-claim-index.md#a-88), [M-60](evidence/04-metric-ledger.md#m-60)); bullets drafted as their finished line, shortened only past two printed lines ([A-91](evidence/03-claim-index.md#a-91), [DEC-59](product/07-decision-log.md#dec-59)); citations follow a line's words ([A-93](evidence/03-claim-index.md#a-93)); the polish experiment closed ([A-97](evidence/03-claim-index.md#a-97)); Growth offered on the turn, once ([A-108](evidence/03-claim-index.md#a-108)) |
+| **Navi** | 10-30 | A tab on every page opens that page's chat; Your Career becomes four pages; *Tune my evidence* retired ([A-105](evidence/03-claim-index.md#a-105), [A-107](evidence/03-claim-index.md#a-107), [DEC-68](product/07-decision-log.md#dec-68)); Growth action plans ([A-109](evidence/03-claim-index.md#a-109)); a theme is one gap on every page ([A-78](evidence/03-claim-index.md#a-78)); a reason drafted from the record ([A-68](evidence/03-claim-index.md#a-68)); told work offered as an addition ([A-75](evidence/03-claim-index.md#a-75)) |
+| **Living résumé and GitHub portfolio** | 10-31 | The share link renamed the living résumé; a posting answered as a résumé laid out by code ([A-112](evidence/03-claim-index.md#a-112), [DEC-70](product/07-decision-log.md#dec-70)); situational questions as labeled interpretations ([A-114](evidence/03-claim-index.md#a-114)); a GitHub portfolio behind it, with "Make all public" ([A-120](evidence/03-claim-index.md#a-120), [DEC-74](product/07-decision-log.md#dec-74)) |
 
 ## 8. What changed most since the baseline
 
-| Area | Baseline (2026-09-29) | Now (2026-10-24) |
+| Area | Baseline (2026-09-29) | Now (2026-10-31) |
 |---|---|---|
 | **Where rules live** | Mostly prose in a 1,030-line instruction file; enforcement uneven | Schema constraints, contract tests, a governed call boundary, release scripts; short project rules |
 | **Unit of evidence** | Bodies of work routed through capability addresses | Stories (glued fragments) within one role, enforced by foreign keys |
-| **Who judges evidence** | Model judges, persisted for repeatability | Jev for ranks and states, with four named exceptions; no language model in assessment ([A-05](evidence/03-claim-index.md#a-05)) |
-| **Résumé writing** | Express: one press from analysis to an admitted résumé, with repair | Assess first; Write is its own press; recruiter selects by number; the writer never sees requirements; bullets bound to stories |
+| **Who judges evidence** | Model judges, persisted for repeatability | Jev for ranks and states, with named exceptions ([D-10](evidence/05-discrepancies.md#d-10)); in assessment, one stated model exception ([A-05](evidence/03-claim-index.md#a-05)) |
+| **Résumé writing** | Express: one press from analysis to an admitted résumé, with repair | Assess first; Write is its own press; recruiter selects by number; the bullet writer never sees requirements; bullets bound to stories; summaries from a supported positioning, placed as written |
 | **Gaps** | Coverage findings | Only what a reader would pass on, asked as themes, tracked per requirement by code |
-| **Beyond the résumé** | Discovery and Growth pages inside the fit flow | Job discovery across ATSs, apply kits, browser fill, status tracking, company research, interview prep, shareable conversations, a ChatGPT connector |
-| **Operations** | Hosted Live with a release suite and a removed override | Beta before Live, approved-commit branch, durable work, separate runner, backups, document snapshots, automatic rollback |
+| **Beyond the résumé** | Discovery and Growth pages inside the fit flow | Job discovery across ATSs, apply kits and an application chat, browser fill, status tracking, company research, an interview coach, Navi on every page reading the account, Growth action plans, a living résumé with a GitHub portfolio, a ChatGPT connector |
+| **Operations** | Hosted Live with a release suite and a removed override | Beta before Live, Live on its own cherry-picked branch, durable work, separate runner, backups, document snapshots, automatic rollback |
 | **Measurement** | Ledger reservations vs charges; persisted findings | Every call recorded and priced; capability registry; assessment vs review; measured costs only |
 
 ## 9. What stayed constant

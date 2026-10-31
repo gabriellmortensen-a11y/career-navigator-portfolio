@@ -1,6 +1,6 @@
 # Product 01 — Problem, users and my role
 
-*Product 4.0 · describes Live `7322289` (2026-10-24)*
+*Product 4.1 · describes Live `00eac95` (2026-10-31)*
 
 ## The problem
 
@@ -32,10 +32,10 @@ the product.
 
 | User | Need | What serves it today |
 |---|---|---|
-| **A job seeker with a long or varied career** | Show the right evidence for each opening, without reconstructing the career every time | Career record → Chart My Course → gap chat → résumé → apply kit ([Applications](../applications/00-README.md)) |
+| **A job seeker with a long or varied career** | Show the right evidence for each opening, without reconstructing the career every time | Career record → Chart My Course → gap chat → résumé → apply kit and application chat → interview coach, with Navi on every page ([Applications](../applications/00-README.md)) |
 | **Someone changing careers** | See what their evidence already establishes toward another occupation | Change Course and "careers near my profession" (O*NET-based, no language model) ([A-58](../evidence/03-claim-index.md#a-58)) |
 | **Someone unsure what they want** | A starting point tied to everyday words, not job titles | Problem-first journeys and the work-fit survey ([A-57](../evidence/03-claim-index.md#a-57), [A-59](../evidence/03-claim-index.md#a-59)) |
-| **A recruiter, hiring manager or contact** (indirect) | A truthful, skimmable picture of the candidate | Résumés written only from the person's evidence; a shareable career conversation scoped by the owner ([A-55](../evidence/03-claim-index.md#a-55)) |
+| **A recruiter, hiring manager or contact** (indirect) | A truthful, skimmable picture of the candidate | Résumés written only from the person's evidence; a living résumé scoped by the owner, with the GitHub work behind its answers ([A-55](../evidence/03-claim-index.md#a-55), [A-120](../evidence/03-claim-index.md#a-120)) |
 
 **Usage, stated plainly.** Live is multi-user, with accounts, invitations and row-level security.
 The current application's measured usage, however, is overwhelmingly my own job search. The figures
@@ -63,7 +63,7 @@ implementation agent almost in real time ([H-16](../evidence/03-claim-index.md#h
 | I did | Claude Code agents did |
 |---|---|
 | Identified the problems, from my own use and from what the product showed me | Inspected the repository and proposed designs |
-| Defined behaviour and constraints, and wrote the rules agents must follow | Implemented changes, wrote code and tests |
+| Defined behavior and constraints, and wrote the rules agents must follow | Implemented changes, wrote code and tests |
 | Challenged assumptions and proposed designs | Ran investigations and measurements |
 | Tested the real product on a real job search, daily | Surfaced findings, including their own errors |
 | Interpreted failures and measurements | Deployed to Beta and, with my approval, to Live |
@@ -71,8 +71,8 @@ implementation agent almost in real time ([H-16](../evidence/03-claim-index.md#h
 | Decided what to build, change, revert or delete next | |
 
 **What the repository shows** (consistent with this split, though it cannot prove who typed what):
-- **Co-author trailers:** 652 of the 683 non-merge commits since 2026-10-03 carry a Claude
-  co-author trailer ([M-31](../evidence/04-metric-ledger.md#m-31)).
+- **Co-author trailers:** 652 of the 683 non-merge commits from 2026-10-03 to Live `7322289`
+  (2026-10-24) carry a Claude co-author trailer ([M-31](../evidence/04-metric-ledger.md#m-31)).
 - **Recorded decisions:** commit messages record my decisions in my words, for example "decided by
   the person whose product it is", "product owner, 2026-10-22" and "Asked 2026-10-12: …". By a rough
   text search, about 112 of 621 distinct messages cite a decision or request of mine.
@@ -95,9 +95,10 @@ The cost of that speed is that agents also reintroduce old ideas quickly. The pr
 | Capability | Status |
 |---|---|
 | Career record with an enforced role boundary, one governed writer, provenance | Verified; automatic story composition limited ([Knowledge](../knowledge/00-README.md)) |
-| Job analysis, assessment and gap definition with no language-model call | Verified ([A-05](../evidence/03-claim-index.md#a-05)) |
+| Job analysis, assessment and gap definition, with one stated model exception (reading a line that lists several asks) | Verified ([A-05](../evidence/03-claim-index.md#a-05)) |
 | Gap conversations that produce evidence the person approves | Verified ([A-08](../evidence/03-claim-index.md#a-08)) |
 | Résumé writing from selected evidence, with the writer withheld from requirements | Verified; the withholding itself is limited verification ([A-11](../evidence/03-claim-index.md#a-11), [A-12](../evidence/03-claim-index.md#a-12)) |
 | Job discovery → assessment → apply kit → browser fill → status tracking | Verified; extension limited ([Applications 04](../applications/04-discovery-to-application.md)) |
-| Company research and interview preparation from chosen evidence | Verified; walkthrough has a known defect ([Applications 05](../applications/05-research-and-interview-prep.md)) |
+| Company research and an interview coach that answers only from verified claims | Verified ([A-61](../evidence/03-claim-index.md#a-61), [A-63](../evidence/03-claim-index.md#a-63)); the earlier preparation, quick answers and walkthrough have lost their links on the page ([D-39](../evidence/05-discrepancies.md#d-39)) |
+| A chat on every page that can read the person's account | Verified; routing calibrated once on Beta ([A-102](../evidence/03-claim-index.md#a-102), [A-104](../evidence/03-claim-index.md#a-104), [A-105](../evidence/03-claim-index.md#a-105)) |
 | Outcome measurement (interviews, offers) attributable to the product | **Not established.** No controlled evidence exists ([Product 05](05-quality-and-measurement.md#what-is-not-measured)) |
