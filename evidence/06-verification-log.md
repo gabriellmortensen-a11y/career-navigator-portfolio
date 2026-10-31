@@ -125,8 +125,9 @@ I decided the following before the repository was made public:
 4. **All rights reserved** ([LICENSE](../LICENSE)).
 5. **Release checks:** `tools/check.sh` is run with `PRIVATE_TERMS` pointing at the private denylist,
    which is kept outside the repository.
-6. **Commit metadata:** a GitHub noreply author address and a single-commit history, as the
-   baseline's publication audit recommends.
+6. **Commit metadata:** a GitHub noreply author address, as the baseline's publication audit
+   recommends. The 2026.10.0 release was a single commit; later changes are added as further
+   commits with the same author and no session or tool links in their messages.
 
 ## 7. What was not done
 

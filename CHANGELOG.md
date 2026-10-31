@@ -4,6 +4,20 @@ This file records portfolio releases. Portfolio versions use calendar versioning
 independent of the section versions and of the application's commits
 ([COMPATIBILITY](COMPATIBILITY.md#versions)).
 
+## Unreleased
+
+Changes since 2026.10.0 that no release pins yet. They add ways to find and cite what is already
+here; no claim, status or number changes.
+
+### Added
+- **Decision IDs.** Every row of the [decision log](product/07-decision-log.md) has a stable ID,
+  `DEC-01` to `DEC-36`, in a new first column, with its own anchor (for example
+  [`#dec-01`](product/07-decision-log.md#dec-01)). Order and wording are unchanged.
+- [INSPECT.md](INSPECT.md): where to inspect each kind of artifact (product overview, architecture,
+  decisions, security and authorization, testing and verification, observability, integrations,
+  case studies, claims, metrics and discrepancies, releases, examples), each linked to the exact
+  file, section or anchor, with a short authorship note. Linked from the README's reading paths.
+
 ## 2026.10.0 — 2026-10-25
 
 First release of this portfolio repository.

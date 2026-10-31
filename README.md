@@ -120,6 +120,8 @@ are defined in [COMPATIBILITY](COMPATIBILITY.md#status-vocabulary).
 [Operations and privacy](product/06-operations-and-privacy.md) →
 [Decision log](product/07-decision-log.md) → [Evolution](EVOLUTION.md).
 
+**Looking for a specific artifact:** [INSPECT](INSPECT.md) lists where each kind of work can be inspected, linked to the exact section.
+
 ## How this portfolio is organised
 
 | Folder | What's in it |
